@@ -13,8 +13,8 @@
   setImmediate(() => {
     let user = api.user({type: "slack", workspaceId, userId});
     if (user) {
-      let message = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
-      api.run("slack_webhook.respond_to_slash_command", { http_event, message });
+      let text = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
+      api.run("slack_webhook.respond_to_slash_command", { http_event, text });
     } else {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
       api.run("slack_webhook.respond_to_slash_command", { http_event, text });
