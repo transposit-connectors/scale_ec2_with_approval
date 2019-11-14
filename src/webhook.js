@@ -30,12 +30,27 @@
     });
 
     console.log(options);
+  
+  
+  
     setImmediate(() => {
         let user = api.user({
             type: "slack",
             workspaceId,
             userId
         });
+       console.log("Abcd");
+          if (parsed_body.payload) {
+            console.log("Abcd2");
+            const parameters = {};
+
+            // console.log(text);
+            parameters.http_event = http_event;
+            parameters.text = "saw action";
+            // a new instance type has been requested
+                        return api.run("slack_webhook.respond_to_slash_command", parameters);
+          } 
+      
         if (user) {
           console.log("Abc");
           if (parsed_body.payload) {
