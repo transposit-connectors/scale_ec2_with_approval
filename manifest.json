@@ -2,11 +2,6 @@
   "v2": {
     "transposit": {
       "dependencies": [{
-        "name": "transposit/slack:v2.*.*",
-        "alias": "slack",
-        "title": "Slack",
-        "description": "Authorize this connector if you want to use the Slack API."
-      }, {
         "name": "transposit/slack_webhook:v2.*.*",
         "alias": "slack_webhook"
       }, {
