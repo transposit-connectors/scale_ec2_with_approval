@@ -40,10 +40,6 @@
         };
     });
 
-    console.log(options);
-
-
-
     setImmediate(() => {
         console.log("abcd");
       console.log(userId);
@@ -64,6 +60,8 @@
             parameters.http_event = http_event;
             parameters.text = "saw action";
             // a new instance type has been requested
+                      parameters.response_type = 'in_channel';
+
             return api.run("slack_webhook.respond_to_slash_command", parameters);
         }
 
