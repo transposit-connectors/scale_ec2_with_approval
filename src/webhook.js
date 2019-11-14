@@ -18,7 +18,15 @@
     const userId = parsed_body.user_id;
     const _ = require('underscore.js');
     const types = ['t2.nano', 't2.micro', 't2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
-
+    const options = [];
+    options.push(types.map(t=>{
+      return { text: {         "type": "plain_text",
+                                "text": t,
+                      "emoji" :false
+                     },
+              value: t
+             };
+    });
 
     setImmediate(() => {
         let user = api.user({
@@ -49,31 +57,7 @@
                         "text": "Select an item",
                         "emoji": true
                     },
-                    "options": [{
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Choice 1",
-                                "emoji": true
-                            },
-                            "value": "value-0"
-                        },
-                        {
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Choice 2",
-                                "emoji": true
-                            },
-                            "value": "value-1"
-                        },
-                        {
-                            "text": {
-                                "type": "plain_text",
-                                "text": "Choice 3",
-                                "emoji": true
-                            },
-                            "value": "value-2"
-                        }
-                    ]
+                    "options": options
                 }
             };
             parameters.blocks = [{
