@@ -22,29 +22,48 @@
       });
       console.log(text);
   parameters.http_event = http_event;
-  
+  const obj = {
+			"type": "section",
+			"text": {
+				"type": "mrkdwn",
+				"text": "You can add a button alongside text in your message. "
+			},
+			"accessory": {
+				"type": "button",
+				"text": {
+					"type": "plain_text",
+					"text": "Button",
+					"emoji": true
+				},
+				"value": "click_me_123"
+			}
+		};
+    
+      
+      
   parameters.blocks = [
     {
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": text
+            "text": "hi"
         }
-    },
-    {
-        "type": "actions",
-        "elements": [
-            {
-                "type": "datepicker",
-                "action_id": "start_date",
-                "placeholder": {
-                    "type": "plain_text",
-                    "text": "Start date"
-                }
-            }
-          ]
     }];
-  parameters.response_type = 'ephemeral';
+  parameters.blocks.append(obj);
+    // {
+    //     "type": "actions",
+    //     "elements": [
+    //         {
+    //             "type": "datepicker",
+    //             "action_id": "start_date",
+    //             "placeholder": {
+    //                 "type": "plain_text",
+    //                 "text": "Start date"
+    //             }
+    //         }
+    //       ]
+    // }];
+  parameters.response_type = 'in_channel';
   
   return api.run("slack_webhook.respond_to_slash_command", parameters);
     } else {
