@@ -16,12 +16,16 @@
   const userId = parsed_body.user_id;
   const _ = require('underscore.js');
   const types = ['t2.nano', 't2.micro','t2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
-
+ 
   
   setImmediate(() => {
     let user = api.user({type: "slack", workspaceId, userId});
     if (user) {
-      
+ 
+      let approving_user = "required";
+       if (parsed_body.text) {
+         approving_user = parsed_body.text;
+       }
        const parameters = {};
       
       // console.log(text);
@@ -71,7 +75,7 @@
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": "Resize an instance."
+            "text": "Resize an instance, will ask " + approving_user + " for approval";
         }
     }];     
       const instances = api.run("this.describe_instances", {}, {asUser: user.id});
