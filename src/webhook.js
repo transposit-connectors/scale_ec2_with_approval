@@ -20,6 +20,7 @@
       instances.forEach(i => {
         text += "* " + i.id + " - " + i.state + " - " + i.type;
       });
+      console.log(text);
   parameters.http_event = http_event;
   
   parameters.blocks = [
