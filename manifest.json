@@ -48,7 +48,7 @@
       }, {
         "id": "describe_instances",
         "tql": {
-          "tql": "SELECT instancesSet.item.instanceId, \n       instancesSet.item.dnsName \nFROM aws_ec2.describe_instances\n"
+          "tql": "SELECT instancesSet.item.instanceId as id, \n       instancesSet.item.dnsName as hostname,\n       instancesSet.item.instanceType as type,\n       instancesSet.item.instanceState.name as state\nFROM aws_ec2.describe_instances\n"
         }
       }],
       "dataConnections": [{

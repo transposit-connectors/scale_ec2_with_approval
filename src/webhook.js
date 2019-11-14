@@ -13,15 +13,21 @@
   setImmediate(() => {
     let user = api.user({type: "slack", workspaceId, userId});
     if (user) {
-      let text = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
+      
        const parameters = {};
+      const instances = api.run("this.describe_instances", {}, {asUser: user.id});
+      let text = "";
+      instances.forEach(i => {
+        text += "* " + i.id + " - " + i.state + " - " + i.type;
+      });
   parameters.http_event = http_event;
+  
   parameters.blocks = [
     {
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": "You've requested a PagerDuty override, when would you like the override for?"
+            "text": text
         }
     },
     {
