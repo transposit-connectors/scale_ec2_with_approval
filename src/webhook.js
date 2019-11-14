@@ -26,14 +26,38 @@
 				"text": "You can add a button alongside text in your message. "
 			},
 			"accessory": {
-				"type": "button",
+		"type": "static_select",
+		"placeholder": {
+			"type": "plain_text",
+			"text": "Select an item",
+			"emoji": true
+		},
+		"options": [{
 				"text": {
 					"type": "plain_text",
-					"text": "Button",
+					"text": "Choice 1",
 					"emoji": true
 				},
-				"value": "click_me_123"
+				"value": "value-0"
+			},
+			{
+				"text": {
+					"type": "plain_text",
+					"text": "Choice 2",
+					"emoji": true
+				},
+				"value": "value-1"
+			},
+			{
+				"text": {
+					"type": "plain_text",
+					"text": "Choice 3",
+					"emoji": true
+				},
+				"value": "value-2"
 			}
+		]
+	}
 		};
   parameters.blocks = [
     {
