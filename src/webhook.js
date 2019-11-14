@@ -48,13 +48,13 @@
                 "type": "section",
                 "text": {
                     "type": "mrkdwn",
-                    "text": "You can add a button alongside text in your message. "
+                    "text": "XXX REPLACE ME"
                 },
                 "accessory": {
                     "type": "static_select",
                     "placeholder": {
                         "type": "plain_text",
-                        "text": "Select an item",
+                        "text": "Select a new instance type",
                         "emoji": true
                     },
                     "options": [...options]
