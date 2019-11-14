@@ -41,11 +41,15 @@
 
     setImmediate(() => {
         console.log("abcd");
+      console.log(userId);
+      console.log(workspaceId);
+      console.log("before");
         let user = api.user({
             type: "slack",
             workspaceId,
             userId
         });
+      console.log("after");
         console.log("Abcd");
         if (!in_initial_call) {
             console.log("Abcd2");
