@@ -14,6 +14,7 @@
     } else {
         console.log(parsed_body);
     }
+  console.log("here3");
     const workspaceId = parsed_body.team_id;
     const userId = parsed_body.user_id;
     const _ = require('underscore.js');
@@ -34,6 +35,7 @@
   
   
     setImmediate(() => {
+      conole.log("abcd");
         let user = api.user({
             type: "slack",
             workspaceId,
