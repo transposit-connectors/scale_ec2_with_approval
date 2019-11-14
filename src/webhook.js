@@ -15,10 +15,10 @@
     if (user) {
       let text = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
       console.log(text);
-//      api.run("slack_webhook.respond_to_slash_command", { http_event: http_event, text: text });
+      api.run("slack_webhook.respond_to_slash_command", { http_event: http_event, text: text });
     } else {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
-      api.run("slack_webhook.respond_to_slash_command", { http_event, text });
+      api.run("slack_webhook.respond_to_slash_command", { http_event, text })[0];
     }
   });
   return api.run("slack_webhook.acknowledge_slash_command");
