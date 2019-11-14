@@ -37,8 +37,9 @@
             userId
         });
         if (user) {
+          console.log("Abc");
           if (parsed_body.payload) {
-            
+            console.log("Abc2");
             const parameters = {};
 
             // console.log(text);
