@@ -14,6 +14,7 @@
     let user = api.user({type: "slack", workspaceId, userId});
     if (user) {
       let text = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
+      console.log(text);
       api.run("slack_webhook.respond_to_slash_command", { http_event, text });
     } else {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
