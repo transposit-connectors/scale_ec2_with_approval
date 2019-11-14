@@ -37,6 +37,16 @@
             userId
         });
         if (user) {
+          if (parsed_body.payload) {
+            
+            const parameters = {};
+
+            // console.log(text);
+            parameters.http_event = http_event;
+            parameters.text = "saw action";
+            // a new instance type has been requested
+                        return api.run("slack_webhook.respond_to_slash_command", parameters);
+          } 
 
             let approving_user = "required";
             if (parsed_body.text) {
