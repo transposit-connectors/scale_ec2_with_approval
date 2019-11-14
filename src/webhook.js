@@ -18,7 +18,7 @@
       const instances = api.run("this.describe_instances", {}, {asUser: user.id});
       let text = "";
       instances.forEach(i => {
-        text += "* " + i.id + " - " + i.state + " - " + i.type;
+        text += "* " + i.id + " - " + i.state + " - " + i.type+"\n";
       });
       console.log(text);
   parameters.http_event = http_event;
