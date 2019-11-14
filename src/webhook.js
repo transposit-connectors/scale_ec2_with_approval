@@ -19,14 +19,14 @@
     const _ = require('underscore.js');
     const types = ['t2.nano', 't2.micro', 't2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
     const options = [];
-    options.push(types.map(t=>{
+    options.concat(types.map(t=>{
       return { text: {         "type": "plain_text",
                                 "text": t,
                       "emoji" :false
                      },
               value: t
              };
-    });
+    }));
 
     setImmediate(() => {
         let user = api.user({
