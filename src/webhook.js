@@ -9,14 +9,19 @@
     http_event
 }) => {
     const parsed_body = http_event.parsed_body;
+    let body = parsed_body;
+    let in_initial_call = true;
     if (parsed_body.payload) {
         console.log(JSON.parse(parsed_body.payload));
+      body = JSON.parse(parsed_body.payload);
+      in_initial_call = false;
     } else {
         console.log(parsed_body);
     }
+    
   console.log("here3");
-    const workspaceId = parsed_body.team_id;
-    const userId = parsed_body.user_id;
+    const workspaceId = body.team_id;
+    const userId = body.user_id;
     const _ = require('underscore.js');
     const types = ['t2.nano', 't2.micro', 't2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
     const options = types.map(t => {
@@ -42,7 +47,7 @@
             userId
         });
        console.log("Abcd");
-          if (parsed_body.payload) {
+          if (!in_initial_call) {
             console.log("Abcd2");
             const parameters = {};
 
