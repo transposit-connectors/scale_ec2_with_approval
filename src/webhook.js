@@ -62,7 +62,7 @@
             // a new instance type has been requested
                       parameters.response_type = 'in_channel';
 
-            return api.run("slack_webhook.respond_to_slash_command", parameters);
+            return api.run("slack_webhook.respond_to_interaction", parameters);
         }
 
         if (user) {
