@@ -49,7 +49,7 @@
             "text": "hi"
         }
     }];
-  parameters.blocks.append(obj);
+  parameters.blocks.push(obj);
     // {
     //     "type": "actions",
     //     "elements": [
