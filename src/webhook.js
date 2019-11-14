@@ -9,20 +9,17 @@
   const parsed_body = http_event.parsed_body;
   const workspaceId = parsed_body.team_id;
   const userId = parsed_body.user_id;
+  const _ = require('underscore.js');
 
   setImmediate(() => {
     let user = api.user({type: "slack", workspaceId, userId});
     if (user) {
       
        const parameters = {};
-      const instances = api.run("this.describe_instances", {}, {asUser: user.id});
-      let text = "";
-      instances.forEach(i => {
-        text += "* " + i.id + " - " + i.state + " - " + i.type+"\n";
-      });
-      console.log(text);
+      
+      // console.log(text);
   parameters.http_event = http_event;
-  const obj = {
+  const one_section = {
 			"type": "section",
 			"text": {
 				"type": "mrkdwn",
@@ -38,9 +35,6 @@
 				"value": "click_me_123"
 			}
 		};
-    
-      
-      
   parameters.blocks = [
     {
         "type": "section",
@@ -48,8 +42,19 @@
             "type": "mrkdwn",
             "text": "hi"
         }
-    }];
-  parameters.blocks.push(obj);
+    }];     
+      const instances = api.run("this.describe_instances", {}, {asUser: user.id});
+      // let text = "";
+      instances.forEach(i => {
+        const obj = _.clone(one_section);
+        obj.text.text = i.id + " - " + i.type + " - " + i.state;
+        parameters.blocks.push(obj);
+      });
+    
+      
+      
+ 
+  
     // {
     //     "type": "actions",
     //     "elements": [
