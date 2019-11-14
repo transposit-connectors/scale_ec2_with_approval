@@ -7,7 +7,7 @@
  */
 ({ http_event }) => {
   const parsed_body = http_event.parsed_body;
-  console.log(parsed_body.payload);
+  console.log(JSON.parse(parsed_body.payload);
   const workspaceId = parsed_body.team_id;
   const userId = parsed_body.user_id;
   const _ = require('underscore.js');
