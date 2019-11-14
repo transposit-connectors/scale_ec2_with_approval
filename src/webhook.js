@@ -13,13 +13,13 @@
     let in_initial_call = true;
     if (parsed_body.payload) {
         console.log(JSON.parse(parsed_body.payload));
-      body = JSON.parse(parsed_body.payload);
-      in_initial_call = false;
+        body = JSON.parse(parsed_body.payload);
+        in_initial_call = false;
     } else {
         console.log(parsed_body);
     }
-    
-  console.log("here3");
+
+    console.log("here3");
     const workspaceId = body.team_id;
     const userId = body.user_id;
     const _ = require('underscore.js');
@@ -36,18 +36,18 @@
     });
 
     console.log(options);
-  
-  
-  
+
+
+
     setImmediate(() => {
-      console.log("abcd");
+        console.log("abcd");
         let user = api.user({
             type: "slack",
             workspaceId,
             userId
         });
-       console.log("Abcd");
-          if (!in_initial_call) {
+        console.log("Abcd");
+        if (!in_initial_call) {
             console.log("Abcd2");
             const parameters = {};
 
@@ -55,21 +55,21 @@
             parameters.http_event = http_event;
             parameters.text = "saw action";
             // a new instance type has been requested
-                        return api.run("slack_webhook.respond_to_slash_command", parameters);
-          } 
-      
-        if (user) {
-          console.log("Abc");
-          if (parsed_body.payload) {
-            console.log("Abc2");
-            const parameters = {};
+            return api.run("slack_webhook.respond_to_slash_command", parameters);
+        }
 
-            // console.log(text);
-            parameters.http_event = http_event;
-            parameters.text = "saw action";
-            // a new instance type has been requested
-                        return api.run("slack_webhook.respond_to_slash_command", parameters);
-          } 
+        if (user) {
+            console.log("Abc");
+            if (parsed_body.payload) {
+                console.log("Abc2");
+                const parameters = {};
+
+                // console.log(text);
+                parameters.http_event = http_event;
+                parameters.text = "saw action";
+                // a new instance type has been requested
+                return api.run("slack_webhook.respond_to_slash_command", parameters);
+            }
 
             let approving_user = "required";
             if (parsed_body.text) {
