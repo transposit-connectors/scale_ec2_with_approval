@@ -39,7 +39,7 @@
     }];
   parameters.response_type = 'ephemeral';
   
-  api.run("slack_webhook.respond_to_slash_command", parameters);
+  return api.run("slack_webhook.respond_to_slash_command", parameters);
     } else {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
       api.run("slack_webhook.respond_to_slash_command", { http_event, text });
