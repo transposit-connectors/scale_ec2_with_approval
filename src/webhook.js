@@ -58,7 +58,7 @@
                         "text": "Select an item",
                         "emoji": true
                     },
-                    "options": options
+                    "options": [...options]
                 }
             };
             parameters.blocks = [{
