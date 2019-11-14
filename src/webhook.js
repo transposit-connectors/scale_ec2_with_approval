@@ -75,7 +75,7 @@
         "type": "section",
         "text": {
             "type": "mrkdwn",
-            "text": "Resize an instance, will ask " + approving_user + " for approval";
+            "text": "Resize an instance, will ask " + approving_user + " for approval"
         }
     }];     
       const instances = api.run("this.describe_instances", {}, {asUser: user.id});
