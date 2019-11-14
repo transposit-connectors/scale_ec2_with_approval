@@ -54,15 +54,17 @@
         console.log("Abcd");
         if (!in_initial_call) {
             console.log("Abcd2");
+          console.log(http_event);
             const parameters = {};
 
             // console.log(text);
             parameters.http_event = http_event;
+            body.actions[0].selected_option
             parameters.text = "saw action";
             // a new instance type has been requested
                       parameters.response_type = 'in_channel';
 
-            return api.run("slack_webhook.respond_to_interaction", parameters);
+            //return api.run("slack_webhook.respond_to_interaction", parameters);
         }
 
         if (user) {
