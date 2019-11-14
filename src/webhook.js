@@ -15,7 +15,7 @@
     if (user) {
       let text = api.run('this.get_slack_message', {}, {asUser: user.id})[0];
        const parameters = {};
-  parameters.http_event = params.http_event;
+  parameters.http_event = http_event;
   parameters.blocks = [
     {
         "type": "section",
