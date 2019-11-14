@@ -40,7 +40,7 @@
   
   
     setImmediate(() => {
-      conole.log("abcd");
+      console.log("abcd");
         let user = api.user({
             type: "slack",
             workspaceId,
