@@ -7,9 +7,6 @@
       }, {
         "name": "transposit/aws_ec2:v2.*.*",
         "alias": "aws_ec2"
-      }, {
-        "name": "transposit/aws_pricing:v1.*.*",
-        "alias": "aws_pricing"
       }],
       "operations": [{
         "id": "webhook",
