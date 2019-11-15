@@ -85,6 +85,7 @@
                 parameters.blocks.push(obj);
             });
 
+          console.log(parameters);
             return api.run("this.post_chat_message", parameters);
         } else {
             let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
