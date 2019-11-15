@@ -19,6 +19,7 @@
   
   
     const parsed_body = http_event.parsed_body;
+  console.log(parsed_body);
     let body = parsed_body;
     let in_initial_call = true;
     let workspaceId = body.team_id;
