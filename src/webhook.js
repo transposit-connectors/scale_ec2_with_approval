@@ -34,7 +34,7 @@
       userId
     });
 
-    const raw_full_command = body.event.text;
+    const raw_full_command = parsed_body.event.text;
     const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
     const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
 
