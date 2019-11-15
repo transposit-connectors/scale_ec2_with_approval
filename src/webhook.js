@@ -28,17 +28,20 @@
   
     setImmediate(() => {
 
+      console.log("here1");
         let user = api.user({
             type: "slack",
             workspaceId,
             userId
         });
    
+      console.log("here2");
         if (user) {
 
             if (parsed_body.text) {
                 approving_user = parsed_body.text;
             }
+          console.log("here3");
             const parameters = {};
 
             // console.log(text);
@@ -71,10 +74,7 @@
             return api.run("this.post_chat_message", parameters);
         } else {
             let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
-            api.run("slack_webhook.respond_to_slash_command", {
-                http_event,
-                text
-            });
+            return api.run("slack.post_chat_message", {text: text, channel: 'test5'});
         }
     });
     return { status_code: 200 };
