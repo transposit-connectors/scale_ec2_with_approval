@@ -45,6 +45,7 @@
       const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
       console.log("rc");console.log(raw_command);
 
+      return api.run("slack.post_chat_message", {text: "abcd", channel: 'test5'});
       if (! raw_command ){
         console.log("didbn't see raw command");
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
