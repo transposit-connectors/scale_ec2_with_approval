@@ -2,7 +2,7 @@
   
     const parameters = {};
 
-    parameters.channel = channel;
+    parameters.channel = params.channel;
     const one_section = {
       "type": "section",
       "text": {

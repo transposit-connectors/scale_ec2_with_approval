@@ -92,6 +92,11 @@
       }, {
         "id": "create_parameters_for_list_instances",
         "function": {
+          "parameters": [{
+            "name": "channel",
+            "type": "STRING",
+            "required": true
+          }],
           "js": "create_parameters_for_list_instances.js",
           "lang": "js"
         }
