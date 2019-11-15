@@ -48,6 +48,12 @@
       if (! raw_command ){
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
       }
+      if (raw_command.length < 1) {
+         return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
+      }
+      if (! /list-ec2-instances/.match(raw_command)) {
+        return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
+      }
       let command_text = "";
         if (user) {
 
