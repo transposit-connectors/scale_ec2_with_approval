@@ -33,8 +33,8 @@
       workspaceId,
       userId
     });
-    
-      if (!user) {
+
+    if (!user) {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
       return api.run("this.post_text_only_message", {
         text: help_text,
@@ -68,40 +68,40 @@
         channel: channel
       });
     }
-  
+
     let command_text = "";
-    
 
-      const parameters = {};
 
-      parameters.channel = channel;
-      const one_section = {
-        "type": "section",
-        "text": {
-          "type": "mrkdwn",
-          "text": "XXX REPLACE ME"
-        },
+    const parameters = {};
 
-      };
-      parameters.blocks = [{
-        "type": "section",
-        "text": {
-          "type": "mrkdwn",
-          "text": "Instances in your account"
-        }
-      }];
-      const instances = api.run("this.describe_instances", {}, {
-        asUser: user.id
-      });
-      // let text = "";
-      instances.forEach(i => {
-        const obj = _.clone(one_section);
-        obj.text.text = i.id + " - " + i.type + " - " + i.state;
-        parameters.blocks.push(obj);
-      });
+    parameters.channel = channel;
+    const one_section = {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "XXX REPLACE ME"
+      },
 
-      return api.run("this.post_chat_message", parameters);
-   
+    };
+    parameters.blocks = [{
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "Instances in your account"
+      }
+    }];
+    const instances = api.run("this.describe_instances", {}, {
+      asUser: user.id
+    });
+    // let text = "";
+    instances.forEach(i => {
+      const obj = _.clone(one_section);
+      obj.text.text = i.id + " - " + i.type + " - " + i.state;
+      parameters.blocks.push(obj);
+    });
+
+    return api.run("this.post_chat_message", parameters);
+
   });
   return {
     status_code: 200
