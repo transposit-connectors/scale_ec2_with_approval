@@ -53,7 +53,7 @@
         channel: channel
       });
     }
-    if (!new RegExp(/list-ec2-instances/).match(raw_command)) {
+    if (!new RegExp(/list-ec2-instances/).exec(raw_command)) {
       console.log("didn't see raw command we understood");
       return api.run("this.post_text_only_message", {
         text: help_text,
