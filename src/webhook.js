@@ -16,7 +16,7 @@
     body: http_event.parsed_body.challenge
   };
 }
-  api.run("this.post_chat_message_1");
+  
   
     const parsed_body = http_event.parsed_body;
   console.log(parsed_body);
@@ -30,6 +30,8 @@
     const _ = require('underscore.js');
   
     setImmediate(() => {
+      
+      api.run("this.post_chat_message_1");
 
       console.log("here1");
         let user = api.user({
