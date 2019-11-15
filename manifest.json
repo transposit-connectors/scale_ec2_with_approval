@@ -70,6 +70,11 @@
           }],
           "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'attachments' : @blocks,\n    'channel' : @channel,\n    -- 'text' : 'a'  \n    \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
+      }, {
+        "id": "post_chat_message_1",
+        "tql": {
+          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    \n    \n    'channel' : 'test5',\n    \n    'text' : 'abc',\n   \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",

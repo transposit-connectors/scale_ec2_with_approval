@@ -16,7 +16,7 @@
     body: http_event.parsed_body.challenge
   };
 }
-  
+  api.run("this.post_chat_message_1");
   
     const parsed_body = http_event.parsed_body;
   console.log(parsed_body);
