@@ -45,18 +45,18 @@
       const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
       console.log("rc");console.log(raw_command);
 
-      return api.run("slack.post_chat_message", {text: "abcd", channel: 'test5'});
+      // return api.run("slack.post_chat_message", {text: "abcd", channel: 'test5'});
       if (! raw_command ){
         console.log("didbn't see raw command");
-         return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
+         return api.run("this.post_chat_message_2", {text: help_text, channel: 'test5'});
       }
       if (raw_command.length < 1) {
         console.log("didbn't see raw command length");
-         return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
+         return api.run("this.post_chat_message_2", {text: help_text, channel: 'test5'});
       }
       if (! /list-ec2-instances/.match(raw_command)) {
         console.log("didbn't see raw command we understood");
-        return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
+                return api.run("this.post_chat_message_2", {text: help_text, channel: 'test5'});
       }
       console.log("after it all");
       let command_text = "";
