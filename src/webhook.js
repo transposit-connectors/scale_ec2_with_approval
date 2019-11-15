@@ -23,8 +23,10 @@
     let body = parsed_body;
     let in_initial_call = true;
     let workspaceId = body.team_id;
-    let userId = body.user_id;
+    let userId = body.authed_users[0];
 
+  console.log(userId);
+  console.log(workspaceId);
     const _ = require('underscore.js');
   
     setImmediate(() => {
