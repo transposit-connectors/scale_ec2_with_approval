@@ -8,6 +8,14 @@
 ({
     http_event
 }) => {
+  
+  if (http_event.parsed_body.challenge) {
+  return {
+    status_code: 200,
+    headers: { "Content-Type": "text/plain" },
+    body: http_event.parsed_body.challenge
+  };
+}
     const parsed_body = http_event.parsed_body;
     let body = parsed_body;
     let in_initial_call = true;
