@@ -18,8 +18,9 @@
 }
   
     const parsed_body = http_event.parsed_body;
-    let workspaceId = parsed_body.team_id;
-    let userId = parsed_body.event.user;
+    const workspaceId = parsed_body.team_id;
+    const userId = parsed_body.event.user;
+    const channel = 'test5';
 
     const _ = require('underscore.js');
   
@@ -35,25 +36,25 @@
       const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
       const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
 
-      // return api.run("slack.post_chat_message", {text: "abcd", channel: 'test5'});
+      // return api.run("slack.post_chat_message", {text: "abcd", channel: channel});
       if (! raw_command ){
         console.log("didn't see raw command");
-         return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
+         return api.run("this.post_text_only_message", {text: help_text, channel: channel});
       }
       if (raw_command.length < 1) {
         console.log("didn't see raw command length");
-         return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
+         return api.run("this.post_text_only_message", {text: help_text, channel: channel});
       }
       if (! /list-ec2-instances/.match(raw_command)) {
         console.log("didn't see raw command we understood");
-                return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
+                return api.run("this.post_text_only_message", {text: help_text, channel: channel});
       }
       let command_text = "";
         if (user) {
 
             const parameters = {};
 
-            parameters.channel = "test5";
+            parameters.channel = channel;
             const one_section = {
                 "type": "section",
                 "text": {
@@ -82,7 +83,7 @@
             return api.run("this.post_chat_message", parameters);
         } else {
             let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
-            return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'})
+            return api.run("this.post_text_only_message", {text: help_text, channel: channel})
         }
     });
     return { status_code: 200 };
