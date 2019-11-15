@@ -71,7 +71,7 @@
 
     let command_text = "";
 
-
+    const parameters = api.run("this.create_parameters_for_list_instances")[0];
 
     return api.run("this.post_chat_message", parameters);
 
