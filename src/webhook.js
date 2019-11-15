@@ -41,9 +41,9 @@
       console.log("here2");
       console.log(body.event.text);
       const raw_full_command = body.event.text;
-      const raw_command = raw_full_command.substr(raw_full_command.indexOf(" ") + 1);
+      const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
       const help_text = `I don't understand the command. Please either "list-ec2-instances" or `;
-      console.log(raw_command);
+      console.log("rc");console.log(raw_command);
 
       if (! raw_command ){
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
