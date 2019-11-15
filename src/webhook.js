@@ -39,7 +39,7 @@
         });
    
       console.log("here2");
-      console.log(body.event.text)
+      console.log(body.event.text);
         if (user) {
 
             if (parsed_body.text) {
