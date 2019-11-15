@@ -23,7 +23,7 @@
     let body = parsed_body;
     let in_initial_call = true;
     let workspaceId = body.team_id;
-    let userId = body.authed_users[0];
+    let userId = body.event.user;
 
   console.log(userId);
   console.log(workspaceId);
@@ -39,6 +39,7 @@
         });
    
       console.log("here2");
+      console.log(body.event.text)
         if (user) {
 
             if (parsed_body.text) {
