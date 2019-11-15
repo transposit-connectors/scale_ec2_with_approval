@@ -30,9 +30,7 @@
     const _ = require('underscore.js');
   
     setImmediate(() => {
-      
-      api.run("this.post_chat_message_1");
-
+  
       console.log("here1");
         let user = api.user({
             type: "slack",
@@ -45,6 +43,7 @@
       const raw_full_command = body.event.text;
       const raw_command = raw_full_command.substr(raw_full_command.indexOf(" ") + 1);
       const help_text = `I don't understand the command. Please either "list-ec2-instances" or `;
+      console.log(raw_command);
 
       if (! raw_command ){
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
