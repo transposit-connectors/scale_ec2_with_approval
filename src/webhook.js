@@ -44,7 +44,7 @@
 
     const raw_full_command = parsed_body.event.text;
     const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
-    const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
+    const help_text = "I don't understand the command. \n\nPlease either 'list-ec2-instances' or 'resize-ec2-instance \"instance-id\", approver: @name'";
 
     // return api.run("slack.post_chat_message", {text: "abcd", channel: channel});
     if (!raw_command) {
