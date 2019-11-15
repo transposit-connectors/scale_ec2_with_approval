@@ -59,7 +59,16 @@
       }, {
         "id": "post_chat_message",
         "tql": {
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    \n    'channel' : 'test5',\n    'text' : 'hiya'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          "parameters": [{
+            "name": "channel",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "blocks",
+            "type": "ARRAY",
+            "required": true
+          }],
+          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'attachments' : @blocks,\n    'channel' : @channel,\n    -- 'text' : 'a'  \n    \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }],
       "dataConnections": [{

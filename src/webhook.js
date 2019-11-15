@@ -42,7 +42,7 @@
             const parameters = {};
 
             // console.log(text);
-            parameters.http_event = http_event;
+            parameters.channel = "test5";
             const one_section = {
                 "type": "section",
                 "text": {
@@ -68,9 +68,7 @@
                 parameters.blocks.push(obj);
             });
 
-            parameters.response_type = 'in_channel';
-
-            return api.run("slack_webhook.respond_to_slash_command", parameters);
+            return api.run("this.post_chat_message", parameters);
         } else {
             let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
             api.run("slack_webhook.respond_to_slash_command", {
