@@ -1,8 +1,10 @@
 (params) => {
   
     const parameters = {};
+  
 
     parameters.channel = params.channel;
+  const user = params.user;
     const one_section = {
       "type": "section",
       "text": {
