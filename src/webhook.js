@@ -42,16 +42,19 @@
       console.log(body.event.text);
       const raw_full_command = body.event.text;
       const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
-      const help_text = `I don't understand the command. Please either "list-ec2-instances" or `;
+      const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
       console.log("rc");console.log(raw_command);
 
       if (! raw_command ){
+        console.log("didbn't see raw command");
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
       }
       if (raw_command.length < 1) {
+        console.log("didbn't see raw command length");
          return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
       }
       if (! /list-ec2-instances/.match(raw_command)) {
+        console.log("didbn't see raw command we understood");
         return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
       }
       let command_text = "";
