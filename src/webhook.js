@@ -57,6 +57,7 @@
         console.log("didbn't see raw command we understood");
         return api.run("slack.post_chat_message", {text: help_text, channel: 'test5'});
       }
+      console.log("after it all");
       let command_text = "";
         if (user) {
 
