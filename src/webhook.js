@@ -18,56 +18,41 @@
 }
   
     const parsed_body = http_event.parsed_body;
-  console.log(parsed_body);
-    let body = parsed_body;
-    let in_initial_call = true;
-    let workspaceId = body.team_id;
-    let userId = body.event.user;
+    let workspaceId = parsed_body.team_id;
+    let userId = parsed_body.event.user;
 
-  console.log(userId);
-  console.log(workspaceId);
     const _ = require('underscore.js');
   
     setImmediate(() => {
   
-      console.log("here1");
         let user = api.user({
             type: "slack",
             workspaceId,
             userId
         });
    
-      console.log("here2");
-      console.log(body.event.text);
       const raw_full_command = body.event.text;
       const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
       const help_text = "I don't understand the command. Please either 'list-ec2-instances' or ";
-      console.log("rc");console.log(raw_command);
 
       // return api.run("slack.post_chat_message", {text: "abcd", channel: 'test5'});
       if (! raw_command ){
-        console.log("didbn't see raw command");
+        console.log("didn't see raw command");
          return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
       }
       if (raw_command.length < 1) {
-        console.log("didbn't see raw command length");
+        console.log("didn't see raw command length");
          return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
       }
       if (! /list-ec2-instances/.match(raw_command)) {
-        console.log("didbn't see raw command we understood");
+        console.log("didn't see raw command we understood");
                 return api.run("this.post_text_only_message", {text: help_text, channel: 'test5'});
       }
-      console.log("after it all");
       let command_text = "";
         if (user) {
 
-            if (parsed_body.text) {
-                approving_user = parsed_body.text;
-            }
-          console.log("here3");
             const parameters = {};
 
-            // console.log(text);
             parameters.channel = "test5";
             const one_section = {
                 "type": "section",
@@ -94,7 +79,6 @@
                 parameters.blocks.push(obj);
             });
 
-          console.log(parameters);
             return api.run("this.post_chat_message", parameters);
         } else {
             let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
