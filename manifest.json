@@ -76,7 +76,7 @@
           "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    \n    \n    'channel' : 'test5',\n    'blocks' :  [{\n                \"type\": \"section\",\n                \"text\": {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"Instances in your account\"\n                }\n            }],\n    -- 'text' : 'abcd',\n   \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }, {
-        "id": "post_chat_message_2",
+        "id": "post_text_only_message",
         "tql": {
           "parameters": [{
             "name": "text",
