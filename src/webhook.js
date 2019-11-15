@@ -33,6 +33,14 @@
       workspaceId,
       userId
     });
+    
+      if (!user) {
+      let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
+      return api.run("this.post_text_only_message", {
+        text: help_text,
+        channel: channel
+      })
+    }
 
     const raw_full_command = parsed_body.event.text;
     const raw_command = raw_full_command.substr(raw_full_command.indexOf(">") + 2); // get rid of botusername
@@ -60,8 +68,9 @@
         channel: channel
       });
     }
+  
     let command_text = "";
-    if (user) {
+    
 
       const parameters = {};
 
@@ -92,13 +101,7 @@
       });
 
       return api.run("this.post_chat_message", parameters);
-    } else {
-      let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
-      return api.run("this.post_text_only_message", {
-        text: help_text,
-        channel: channel
-      })
-    }
+   
   });
   return {
     status_code: 200
