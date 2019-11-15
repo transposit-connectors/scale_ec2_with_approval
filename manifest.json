@@ -7,6 +7,9 @@
       }, {
         "name": "transposit/aws_ec2:v2.*.*",
         "alias": "aws_ec2"
+      }, {
+        "name": "transposit/slack:v3.*.*",
+        "alias": "slack"
       }],
       "operations": [{
         "id": "webhook",
