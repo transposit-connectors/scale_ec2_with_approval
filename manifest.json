@@ -56,6 +56,11 @@
           "js": "webhook_1.js",
           "lang": "js"
         }
+      }, {
+        "id": "post_chat_message",
+        "tql": {
+          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    \n    'channel' : 'test5',\n    'text' : 'hiya'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",

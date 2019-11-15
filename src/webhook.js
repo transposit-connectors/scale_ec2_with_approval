@@ -16,6 +16,8 @@
     body: http_event.parsed_body.challenge
   };
 }
+  
+  
     const parsed_body = http_event.parsed_body;
     let body = parsed_body;
     let in_initial_call = true;
@@ -77,5 +79,5 @@
             });
         }
     });
-    return api.run("slack_webhook.acknowledge_slash_command");
+    return { status_code: 200 };
 }
