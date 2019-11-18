@@ -82,7 +82,7 @@
       return api.run("this.post_chat_message", parameters);
     }
     if (resize_cmd) {
-      const command_array = raw_command.split(/ +/).filter(s => {s && s.length >0});
+      const command_array = raw_command.split(/ +/).filter(s => {return s && s.length >0});
       
       if (command_array.length != 4) {
         console.log("didn't see resize command we understood");
