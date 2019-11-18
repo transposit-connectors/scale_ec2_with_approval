@@ -26,9 +26,10 @@
       "text": "XXX REPLACE ME"
     },
     "block_id" : params.instanceId,
+     "action_id" : "resize",
     "accessory": {
       "type": "static_select",
-      "action_id" : "resize",
+     
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",
