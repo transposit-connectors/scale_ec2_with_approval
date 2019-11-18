@@ -82,6 +82,8 @@
       const command_array = raw_command.split(" ");  
        if (command_array.length != 4) {
       console.log("didn't see resize command we understood");
+         console.log(command_array);
+         console.log(raw_command);
       return api.run("this.post_text_only_message", {
         text: help_text + " [saw "+raw_command+"]",
         channel: channel
