@@ -28,7 +28,7 @@
   };
   const one_dd = {
 			"type": "actions",
-			"elements": [
+			"elements": [ {
       "type": "static_select",
     "block_id" : params.instanceId,
      "action_id" : "resize",    
