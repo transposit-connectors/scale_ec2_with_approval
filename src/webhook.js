@@ -64,8 +64,9 @@
     
     const list_cmd = new RegExp(/list-ec2-instances/).exec(raw_command) != null;
     const resize_cmd = new RegExp(/resize-ec2-instances/).exec(raw_command) != null;
-    if (!list_cmd && !resize_cmd) {
+    if (!(list_cmd || resize_cmd)) {
       console.log("didn't see raw command we understood");
+      console.log(resize_cmd);
       return api.run("this.post_text_only_message", {
         text: help_text,
         channel: channel
