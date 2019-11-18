@@ -34,9 +34,9 @@
        const parameters = api.run("this.create_parameters_for_approval", {
         channel: channel,
         user: user,
-        approvalUser: approvalUser,
-        instanceId: instanceId,
-        newSize: newSize
+        // approvalUser: approvalUser,
+        // instanceId: instanceId,
+        // newSize: newSize
       })[0];
 
       console.log(parameters);
