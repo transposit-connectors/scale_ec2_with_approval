@@ -6,8 +6,8 @@
 
   parameters.channel = params.channel;
   const user = params.user;
-  // parameters.action_id = "approve";
-
+  
+  console.log(user);
   parameters.blocks = [{
       "type": "section",
       "text": {
