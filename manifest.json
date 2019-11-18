@@ -121,6 +121,19 @@
           "js": "create_parameters_for_resize_instances.js",
           "lang": "js"
         }
+      }, {
+        "id": "respond_to_resize",
+        "function": {
+          "parameters": [{
+            "name": "http_event",
+            "default": {
+              "text": "{\"http_method\": \"GET\", \"query_parameters\": {}, \"headers\": {}, \"body\": \"\"}"
+            },
+            "type": "OBJECT"
+          }],
+          "js": "respond_to_resize.js",
+          "lang": "js"
+        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",
