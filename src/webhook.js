@@ -96,13 +96,14 @@
       }
       const instanceId = command_array[1];
       const approvalUser = command_array[3];
+      const stashKey = instanceId + "-" + user.id;
+      stash.put(stashKey,approvalUser);
       const parameters = api.run("this.create_parameters_for_resize_instances", {
         channel: channel,
         user: user,
         instanceId: instanceId
       })[0];
-      console.log("here!")
-      console.log(parameters);
+
       return api.run("this.post_chat_message", parameters);
     }
 
