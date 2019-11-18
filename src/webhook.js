@@ -31,9 +31,10 @@
 
     let user = api.user({
       type: "slack",
-      workspaceId,
-      userId
+      workspaceId: workspaceId,
+      userId: userId
     });
+    
 
     if (!user) {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;

@@ -9,8 +9,8 @@
 
    let user = api.user({
       type: "slack",
-      payload.team.id,
-      payload.user.id
+      workspaceId: payload.team.id,
+      userId: payload.user.id
     });
 
   console.log("user");
