@@ -3,7 +3,7 @@
 
   const parameters = {};
 
-  
+
   parameters.channel = params.channel;
   const user = params.user;
   parameters.blocks = [];
@@ -27,11 +27,11 @@
     }
   };
   const one_dd = {
-			"type": "actions",
-			"elements": [ {
+    "type": "actions",
+    "elements": [{
       "type": "static_select",
-    "block_id" : params.instanceId,
-     "action_id" : "resize",    
+      "block_id": params.instanceId,
+      "action_id": "resize",
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",
@@ -46,7 +46,7 @@
   }).filter(i => {
     return i.id == params.instanceId
   });
-   // console.log(instances);
+  // console.log(instances);
   parameters.thread_ts = params.thread_ts;
 
   instances.forEach(i => {

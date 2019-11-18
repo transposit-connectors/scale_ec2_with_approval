@@ -34,7 +34,7 @@
       workspaceId: workspaceId,
       userId: userId
     });
-    
+
 
     if (!user) {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
@@ -84,8 +84,10 @@
       return api.run("this.post_chat_message", parameters);
     }
     if (resize_cmd) {
-      const command_array = raw_command.split(/ +/).filter(s => {return s && s.length >0});
-      
+      const command_array = raw_command.split(/ +/).filter(s => {
+        return s && s.length > 0
+      });
+
       if (command_array.length != 4) {
         console.log("didn't see resize command we understood");
         console.log(command_array);
@@ -98,9 +100,9 @@
       const instanceId = command_array[1];
       const approvalUser = command_array[3];
       const stashKey = instanceId + "-" + user.id;
-      stash.put(stashKey,approvalUser);
+      stash.put(stashKey, approvalUser);
       console.log(parsed_body.event.ts);
-      
+
       const parameters = api.run("this.create_parameters_for_resize_instances", {
         channel: channel,
         user: user,
