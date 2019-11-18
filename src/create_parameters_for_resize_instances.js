@@ -30,8 +30,7 @@
     "type": "actions",
     "elements": [{
       "type": "static_select",
-      "block_id": params.instanceId,
-      "action_id": "resize",
+      "action_id": "resize-"+params.instanceId,
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",
