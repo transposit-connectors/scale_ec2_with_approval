@@ -105,7 +105,7 @@
         channel: channel,
         user: user,
         instanceId: instanceId,
-        thread_ts: parsed_body.event.ts
+        thread_ts: parsed_body.event.ts // XXX TODO
       })[0];
 
       console.log(parameters);
