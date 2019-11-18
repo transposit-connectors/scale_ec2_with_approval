@@ -38,7 +38,8 @@
     asUser: user.id,
   }).filter(i => {
     return i.id == params.instanceId
-  })[0];
+  });
+   console.log(instances);
 
   instances.forEach(i => {
     const obj = _.clone(one_section);
