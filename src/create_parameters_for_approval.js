@@ -12,7 +12,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": params.approvalUser+", do you want to approve or reject the proposal to resize instance "+params.instanceId+" to a size: "+params.newSize+" from user <@"+params.user.id+">"
+        "text": params.approvalUser+", do you want to approve or reject the proposal to resize instance "+params.instanceId+" to a size: "+params.newSize+" from user "+params.user.real_name+""
       }
     },
     {
