@@ -7,9 +7,6 @@
       }, {
         "name": "transposit/aws_ec2:v2.*.*",
         "alias": "aws_ec2"
-      }, {
-        "name": "transposit/slack:v3.*.*",
-        "alias": "slack"
       }],
       "operations": [{
         "id": "webhook",
@@ -43,84 +40,6 @@
         "tql": {
           "tql": "SELECT instancesSet.item.instanceId as id, \n       instancesSet.item.dnsName as hostname,\n       instancesSet.item.instanceType as type,\n       instancesSet.item.instanceState.name as state\nFROM aws_ec2.describe_instances\n"
         }
-      }, {
-        "id": "webhook_1",
-        "function": {
-          "parameters": [{
-            "name": "http_event",
-            "default": {
-              "text": "{   \"query_parameters\": {     \"api_key\": \"XXX\"   },   \"http_method\": \"POST\",   \"parsed_body\": {     \"channel_name\": \"XXX\",     \"user_id\": \"UXXX\",     \"user_name\": \"iggy\",     \"trigger_id\": \"XXX\",     \"team_domain\": \"my_domain\",     \"team_id\": \"TXXX\",     \"text\": \"\",     \"channel_id\": \"DXXX\",     \"command\": \"/test\",     \"token\": \"XXX\",     \"response_url\": \"https://hooks.slack.com/commands/TXXX/XXX/XXX\"   },   \"body\": \"token=XXX&team_id=TXXX&team_domain=my_domain&channel_id=DXXX&channel_name=XXX&user_id=UXXX&user_name=iggy&command=%2Ftest&text=&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FTXXX%2FXXX%2FXXX&trigger_id=XXX\" }"
-            },
-            "type": "OBJECT"
-          }],
-          "js": "webhook_1.js",
-          "lang": "js"
-        }
-      }, {
-        "id": "post_chat_message",
-        "tql": {
-          "parameters": [{
-            "name": "channel",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "blocks",
-            "type": "ARRAY",
-            "required": true
-          }],
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'blocks' : @blocks,\n    'channel' : @channel,\n    -- 'text' : 'a'  \n    \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
-        "id": "post_chat_message_1",
-        "tql": {
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    \n    \n    'channel' : 'test5',\n    'blocks' :  [{\n                \"type\": \"section\",\n                \"text\": {\n                    \"type\": \"mrkdwn\",\n                    \"text\": \"Instances in your account\"\n                }\n            }],\n    -- 'text' : 'abcd',\n   \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
-        "id": "post_text_only_message",
-        "tql": {
-          "parameters": [{
-            "name": "text",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "channel",
-            "type": "STRING",
-            "required": true
-          }],
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n \n    'channel' : @channel,\n  \n    'text' : @text,\n   \n  })\n"
-        }
-      }, {
-        "id": "create_parameters_for_list_instances",
-        "function": {
-          "parameters": [{
-            "name": "channel",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "user",
-            "type": "OBJECT"
-          }],
-          "js": "create_parameters_for_list_instances.js",
-          "lang": "js"
-        }
-      }, {
-        "id": "create_parameters_for_resize_instances",
-        "function": {
-          "parameters": [{
-            "name": "channel",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "user",
-            "type": "OBJECT"
-          }, {
-            "name": "instanceId",
-            "type": "STRING",
-            "required": true
-          }],
-          "js": "create_parameters_for_resize_instances.js",
-          "lang": "js"
-        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",
@@ -147,17 +66,7 @@
           }
         }
       }, {
-        "ref": "slack.raw",
-        "overrides": {
-          "swagger": {
-            "oauthConfig": {
-              "scope": "chat:write:bot bot",
-              "accessTokenPath": "bot.bot_access_token"
-            },
-            "executionLimits": {
-            }
-          }
-        }
+        "ref": "slack.raw"
       }, {
         "ref": "aws_ec2",
         "requireConsumerSignin": true,
