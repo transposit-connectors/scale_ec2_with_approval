@@ -27,6 +27,7 @@
   const _ = require('underscore.js');
 
   setImmediate(() => {
+    console.log(http_event);
 
     let user = api.user({
       type: "slack",
