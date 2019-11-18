@@ -25,8 +25,8 @@
         console.log("got into approval/disapproval block");
         console.log(payload.actions[0].value);
       }
-      if (payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
-        const instanceId = payload.actions[0].block_id;
+      if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
+        const instanceId = action.replace("resize-","")
         const stashKey = instanceId + "-" + user.id; // may want to key just on instance id and fail with error if already present.
         const approvalUser = stash.get(stashKey);
         const newSize = payload.actions[0].selected_option.value;
