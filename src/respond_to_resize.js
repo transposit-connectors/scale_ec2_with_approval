@@ -18,12 +18,16 @@
   setImmediate(() => {
       if (payload.actions && payload.actions[0] && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = payload.actions[0].block_id ;
-        const stashKey = instanceId + "-" + user.id;
+        const stashKey = instanceId + "-" + user.id; // may want to key just on instance id and fail with error if already present.
       const approvalUser = stash.get(stashKey);
         const newSize = payload.actions[0].selected_option.value;
       // present button to approvalUser
       // handle either case and update this message.
         // do we want this to be threaded?
+        api.run("this.post_text_only_message", {
+        text: "Approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
+        channel: approvalUser
+      }); 
         
      return api.run("this.post_text_only_message", {
         text: "Great, will ask "+approvalUser+ " to approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
