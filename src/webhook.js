@@ -22,7 +22,7 @@
   const parsed_body = http_event.parsed_body;
   const workspaceId = parsed_body.team_id;
   const userId = parsed_body.event.user;
-  const channel = 'test5';
+  const channel = 'test5'; // XXX pull out to env var
 
   const _ = require('underscore.js');
 

@@ -87,7 +87,7 @@
             "type": "STRING",
             "required": true
           }],
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n \n    'channel' : @channel,\n  \n    'text' : @text,\n   \n  })\n"
+          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n  })\n"
         }
       }, {
         "id": "create_parameters_for_list_instances",
