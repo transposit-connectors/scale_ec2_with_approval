@@ -113,6 +113,10 @@
           }, {
             "name": "user",
             "type": "OBJECT"
+          }, {
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
           }],
           "js": "create_parameters_for_resize_instances.js",
           "lang": "js"

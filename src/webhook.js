@@ -92,9 +92,12 @@
             channel: channel
           });
         }
+        const instanceId = command_array[1];
+        const approvalUser = command_array[3];
         const parameters = api.run("this.create_parameters_for_resize_instances", {
           channel: channel,
-          user: user
+          user: user,
+          instanceId: 
         })[0];
         return api.run("this.post_chat_message", parameters);
 

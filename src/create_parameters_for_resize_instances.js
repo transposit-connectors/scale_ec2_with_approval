@@ -3,7 +3,6 @@
 
   const parameters = {};
 
-
   parameters.channel = params.channel;
   const user = params.user;
 
@@ -35,12 +34,10 @@
     }
   };
 
-}
-
 const instances = api.run("this.describe_instances", {}, {
-  asUser: user.id
-});
-// let text = "";
+  asUser: user.id,
+}).filter(i => {i.instanceId == params.instanceId})[0];
+
 instances.forEach(i => {
   const obj = _.clone(one_section);
   obj.text.text = i.id + " - " + i.type + " - " + i.state;
