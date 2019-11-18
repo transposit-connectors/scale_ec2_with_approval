@@ -100,10 +100,9 @@
           instanceId: instanceId
         })[0];
         return api.run("this.post_chat_message", parameters);
+       }
 
 
-
-      });
   });
 
 return {
