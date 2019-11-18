@@ -5,6 +5,7 @@
 
 
   parameters.channel = params.channel;
+  parameters.action_id = "list";
   const user = params.user;
   const one_section = {
     "type": "section",

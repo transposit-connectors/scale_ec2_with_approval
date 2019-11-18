@@ -6,6 +6,7 @@
 
   parameters.channel = params.channel;
   const user = params.user;
+  parameters.action_id = "approve";
 
   parameters.blocks = [
 		{

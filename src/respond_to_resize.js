@@ -16,7 +16,13 @@
   console.log("user");
   console.log(user);
   setImmediate(() => {
-      if (payload.actions && payload.actions[0] && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
+      if (payload.actions && payload.actions[0]) {
+        const action = payload.actions[0].action_id;
+        if (action == "approve") {
+          console.log("got into approval/disapproval block");
+          console.log(payload.actions[0].value);
+        }
+        if ( action == "resize" && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = payload.actions[0].block_id ;
         const stashKey = instanceId + "-" + user.id; // may want to key just on instance id and fail with error if already present.
       const approvalUser = stash.get(stashKey);
@@ -26,7 +32,10 @@
         // do we want this to be threaded?
        const parameters = api.run("this.create_parameters_for_approval", {
         channel: channel,
-        user: user
+        user: user,
+        approvalUser: approvalUser,
+        instanceId: instanceId,
+        newSize: newSize
       })[0];
 
       console.log(parameters);
@@ -36,6 +45,7 @@
         // text: "Great, will ask "+approvalUser+ " to approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
         // channel: channel
       // });
+        }
   }
   });
 
