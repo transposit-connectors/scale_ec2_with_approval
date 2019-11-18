@@ -56,5 +56,6 @@
     parameters.blocks.push(one_dd);
   });
 
+  console.log(parameters);
   return parameters;
 }
