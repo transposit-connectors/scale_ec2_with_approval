@@ -108,7 +108,7 @@
         thread_ts: parsed_body.event.ts
       })[0];
 
-      constol.log(parameters);
+      console.log(parameters);
       return api.run("this.post_chat_message", parameters);
     }
 
