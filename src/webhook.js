@@ -107,9 +107,10 @@
         channel: channel,
         user: user,
         instanceId: instanceId,
-        thread_ts: parsed_body.event.ts // XXX TODO
+        // thread_ts: parsed_body.event.ts // XXX TODO
       })[0];
 
+      console.log("ffff");
       console.log(parameters);
       return api.run("this.post_chat_message", parameters);
     }
