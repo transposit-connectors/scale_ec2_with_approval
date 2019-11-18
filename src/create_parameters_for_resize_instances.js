@@ -24,19 +24,21 @@
     "text": {
       "type": "mrkdwn",
       "text": "XXX REPLACE ME"
-    },
-    "block_id" : params.instanceId,
-     "action_id" : "resize",
-    "accessory": {
+    }
+  };
+  const one_dd = {
+			"type": "actions",
+			"elements": [
       "type": "static_select",
-     
+    "block_id" : params.instanceId,
+     "action_id" : "resize",    
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",
         "emoji": true
       },
       "options": [...options]
-    }
+    }]
   };
 
   const instances = api.run("this.describe_instances", {}, {
@@ -51,6 +53,7 @@
     const obj = _.clone(one_section);
     obj.text.text = i.id + " - " + i.type + " - " + i.state;
     parameters.blocks.push(obj);
+    parameters.blocks.push(one_dd);
   });
 
   return parameters;
