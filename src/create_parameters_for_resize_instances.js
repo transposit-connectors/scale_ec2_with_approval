@@ -37,7 +37,7 @@
   const instances = api.run("this.describe_instances", {}, {
     asUser: user.id,
   }).filter(i => {
-    i.instanceId == params.instanceId
+    return i.instanceId == params.instanceId
   })[0];
 
   instances.forEach(i => {
