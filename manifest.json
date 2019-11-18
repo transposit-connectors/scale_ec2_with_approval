@@ -117,6 +117,10 @@
             "name": "instanceId",
             "type": "STRING",
             "required": true
+          }, {
+            "name": "thread_ts",
+            "type": "STRING",
+            "required": true
           }],
           "js": "create_parameters_for_resize_instances.js",
           "lang": "js"
