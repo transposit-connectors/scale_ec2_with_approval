@@ -21,6 +21,7 @@
 			"elements": [
 				{
 					"type": "button",
+                    "action_id" : "approve",
 					"text": {
 						"type": "plain_text",
 						"text": "Approve",
@@ -31,6 +32,7 @@
 			
             {
 					"type": "button",
+                    "action_id" : "reject",
 					"text": {
 						"type": "plain_text",
 						"text": "Reject",

@@ -3,7 +3,7 @@
 
   const parameters = {};
 
-  parameters.action_id = "resize";
+  
   parameters.channel = params.channel;
   const user = params.user;
   parameters.blocks = [];
@@ -28,6 +28,7 @@
     "block_id" : params.instanceId,
     "accessory": {
       "type": "static_select",
+      "action_id" : "resize",
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",

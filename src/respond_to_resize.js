@@ -13,12 +13,13 @@
       userId: payload.user.id
     });
 
-  console.log("user");
-  console.log(user);
+  // console.log("user");
+  // console.log(user);
   setImmediate(() => {
       if (payload.actions && payload.actions[0]) {
         const action = payload.actions[0].action_id;
-        if (action == "approve") {
+        console.log(action);
+        if (action == "approve" || action =="reject") {
           console.log("got into approval/disapproval block");
           console.log(payload.actions[0].value);
         }
