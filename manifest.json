@@ -133,6 +133,10 @@
           }],
           "js": "respond_to_resize.js",
           "lang": "js"
+        },
+        "access": {
+          "requireApiKey": true,
+          "webhook": true
         }
       }],
       "dataConnections": [{
