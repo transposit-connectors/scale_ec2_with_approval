@@ -34,15 +34,17 @@
     }
   };
 
-const instances = api.run("this.describe_instances", {}, {
-  asUser: user.id,
-}).filter(i => {i.instanceId == params.instanceId})[0];
+  const instances = api.run("this.describe_instances", {}, {
+    asUser: user.id,
+  }).filter(i => {
+    i.instanceId == params.instanceId
+  })[0];
 
-instances.forEach(i => {
-  const obj = _.clone(one_section);
-  obj.text.text = i.id + " - " + i.type + " - " + i.state;
-  parameters.blocks.push(obj);
-});
+  instances.forEach(i => {
+    const obj = _.clone(one_section);
+    obj.text.text = i.id + " - " + i.type + " - " + i.state;
+    parameters.blocks.push(obj);
+  });
 
-return parameters;
+  return parameters;
 }

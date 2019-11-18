@@ -97,7 +97,7 @@
         const parameters = api.run("this.create_parameters_for_resize_instances", {
           channel: channel,
           user: user,
-          instanceId: 
+          instanceId: instanceId
         })[0];
         return api.run("this.post_chat_message", parameters);
 
@@ -106,7 +106,7 @@
       });
   });
 
-  return {
-    status_code: 200
-  };
+return {
+  status_code: 200
+};
 }
