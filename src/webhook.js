@@ -100,6 +100,8 @@
         user: user,
         instanceId: instanceId
       })[0];
+      console.log("here!")
+      console.log(parameters);
       return api.run("this.post_chat_message", parameters);
     }
 
