@@ -111,7 +111,7 @@
       })[0];
 
       console.log("ffff");
-      console.log(parameters);
+      console.log(JSON.stringify(parameters));
       return api.run("this.post_chat_message", parameters);
     }
 
