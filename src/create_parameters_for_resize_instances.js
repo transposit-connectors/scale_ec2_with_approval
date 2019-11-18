@@ -24,6 +24,7 @@
       "type": "mrkdwn",
       "text": "XXX REPLACE ME"
     },
+    "block_id" : params.instanceId,
     "accessory": {
       "type": "static_select",
       "placeholder": {
