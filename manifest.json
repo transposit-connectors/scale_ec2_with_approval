@@ -172,6 +172,18 @@
           }, {
             "name": "user",
             "type": "OBJECT"
+          }, {
+            "name": "approvalUser",
+            "type": "OBJECT",
+            "required": true
+          }, {
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "newSize",
+            "type": "STRING",
+            "required": true
           }],
           "js": "create_parameters_for_approval.js",
           "lang": "js"
