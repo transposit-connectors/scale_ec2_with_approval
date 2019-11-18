@@ -5,6 +5,7 @@
 
   parameters.channel = params.channel;
   const user = params.user;
+  parameters.blocks = [];
 
   const types = ['t2.nano', 't2.micro', 't2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
   const options = types.map(t => {
