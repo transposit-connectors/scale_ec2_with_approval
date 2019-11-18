@@ -24,15 +24,18 @@
       // present button to approvalUser
       // handle either case and update this message.
         // do we want this to be threaded?
-        api.run("this.post_text_only_message", {
-        text: "Approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
-        channel: approvalUser
-      }); 
+       const parameters = api.run("this.create_parameters_for_approval", {
+        channel: channel,
+        user: user
+      })[0];
+
+      console.log(parameters);
+      return api.run("this.post_chat_message", parameters);
         
-     return api.run("this.post_text_only_message", {
-        text: "Great, will ask "+approvalUser+ " to approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
-        channel: channel
-      });
+     // return api.run("this.post_text_only_message", {
+        // text: "Great, will ask "+approvalUser+ " to approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
+        // channel: channel
+      // });
   }
   });
 
