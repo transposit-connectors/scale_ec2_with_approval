@@ -50,7 +50,7 @@
 
   instances.forEach(i => {
     const obj = _.clone(one_section);
-    obj.text.text = i.id + " - " + i.type + " - " + i.state;
+    obj.text.text = i.id + " - " + i.type + " - " + i.state+ ". Change to: ";
     parameters.blocks.push(obj);
     parameters.blocks.push(one_dd);
   });
