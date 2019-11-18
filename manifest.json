@@ -103,6 +103,20 @@
           "js": "create_parameters_for_list_instances.js",
           "lang": "js"
         }
+      }, {
+        "id": "create_parameters_for_resize_instances",
+        "function": {
+          "parameters": [{
+            "name": "channel",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "user",
+            "type": "OBJECT"
+          }],
+          "js": "create_parameters_for_resize_instances.js",
+          "lang": "js"
+        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",
