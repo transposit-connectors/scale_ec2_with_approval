@@ -24,6 +24,14 @@
       if (action == "approve") {
         const approveValue = payload.actions[0].value;
         console.log(approveValue);
+        const approveObj = JSON.parse(approveValue);
+        if (user.id != approveObj.approvalUser) {
+          let text = "You are not authorized to approve or reject this message.";
+          return api.run("this.post_text_only_message", {
+            text: help_text,
+            channel: channel
+          });
+        }
         // verify this is the approvalUser
         // take action
         // send message about approval
@@ -31,6 +39,14 @@
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
         console.log(rejectValue);
+        const rejectObj = JSON.parse(rejectValue);
+        if (user.id != rejectObj.approvalUser) {
+          let text = "You are not authorized to approve or reject this message.";
+          return api.run("this.post_text_only_message", {
+            text: help_text,
+            channel: channel
+          });
+        }
         // if ()
         // verify this is the approval user
         // send message about rejection
