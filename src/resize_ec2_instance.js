@@ -9,9 +9,10 @@
   
   // let result = api.query("SELECT * FROM aws_ec2.start_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })");
   
+  
+  // https://console.staging.transposit.com/t/nina/test_modules_initial/code/op/EcsCheckServiceEvents
   return result;                       
 
-  // https://console.staging.transposit.com/t/yoko/growth_bot/code/op/z_deprecated_check_status_and_post for await
   return {
     success: true
   };

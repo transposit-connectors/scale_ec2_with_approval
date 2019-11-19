@@ -7,14 +7,6 @@
   parameters.channel = params.channel;
   parameters.action_id = "list";
   const user = params.user;
-  const one_section = {
-    "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "XXX REPLACE ME"
-    },
-
-  };
   parameters.blocks = [{
     "type": "section",
     "text": {
@@ -27,7 +19,13 @@
   });
   // let text = "";
   instances.forEach(i => {
-    const obj = _.clone(one_section);
+    const obj = {
+    "type": "section",
+    "text": {
+      "type": "mrkdwn",
+      "text": "XXX REPLACE ME"
+      },
+    };
     obj.text.text = i.id + " - " + i.type + " - " + i.state;
     parameters.blocks.push(obj);
   });
