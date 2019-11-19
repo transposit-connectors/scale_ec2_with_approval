@@ -25,7 +25,7 @@
             "text": "Approve",
             "emoji": true
           },
-          "value": "approve"
+          "value": "approve,"+params.instanceId + ","+params.newSize
         },
 
         {
@@ -36,7 +36,7 @@
             "text": "Reject",
             "emoji": true
           },
-          "value": "reject"
+          "value": "reject,"+params.instanceId + ","+params.newSize
         }
       ]
     }

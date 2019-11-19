@@ -21,9 +21,15 @@
     if (payload.actions && payload.actions[0]) {
       const action = payload.actions[0].action_id;
       console.log(action);
-      if (action == "approve" || action == "reject") {
-        console.log("got into approval/disapproval block");
-        console.log(payload.actions[0].value);
+      if (action == "approve") {
+        // verify this is the approvalUser
+        // take action
+        // send message about approval
+      }
+      if (action == "reject") {
+        if ()
+        // verify this is the approval user
+        // send message about rejection
       }
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = action.replace("resize-","")
