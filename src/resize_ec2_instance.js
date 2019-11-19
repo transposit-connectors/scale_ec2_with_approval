@@ -1,0 +1,5 @@
+(params) => {
+  return {
+    success: true
+  };
+}

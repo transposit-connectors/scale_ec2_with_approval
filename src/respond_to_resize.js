@@ -16,29 +16,45 @@
       console.log(action);
       if (action == "approve") {
         const approveValue = payload.actions[0].value;
-        console.log(approveValue);
         const approveObj = JSON.parse(approveValue);
-        if (user.id != approveObj.approvalUser) {
+        const approvalUserAlphanumericOnly = approveObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
+        
+        if (actingUserId != approvalUserAlphanumericOnly) {
+          console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
-          return api.run("this.post_text_only_message", {
-            text: help_text,
-            channel: channel
+          return api.run("this.post_ephemeral_message", {
+            text: text,
+            channel: channel, 
+            user: actingUserId
           });
         }
-        // verify this is the approvalUser
-        // take action
-        // send message about approval
-      }
+        
+        const text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";
+        return api.run("this.post_text_only_message", {
+            text: text,
+            channel: channel, 
+        });
+        
+        const result = api.run("this.resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize});
+        
+        if (result.success) { 
+            const text = "Resizing instance "+ approveObj.instanceId + " succeeded";
+        return api.run("this.post_text_only_message", {
+            text: text,
+            channel: channel, 
+        });
+        } else {
+            const text = "Resizing instance "+ approveObj.instanceId + " failed";
+        return api.run("this.post_text_only_message", {
+            text: text,
+            channel: channel, 
+        });
+        }
+              }
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
-        console.log(rejectValue);
         const rejectObj = JSON.parse(rejectValue);
-        console.log(rejectObj);
-        // console.log(user);
-        console.log(rejectObj.approvalUser);
         const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
-        console.log(approvalUserAlphanumericOnly);
-        console.log("abc");
         
         if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
@@ -50,14 +66,11 @@
           });
         }
         const text = "The request to resize instance "+ rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
-        console.log(text);
         return api.run("this.post_text_only_message", {
             text: text,
             channel: channel, 
           });
-        // if ()
-        // verify this is the approval user
-        // send message about rejection
+        
       }
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = action.replace("resize-","")
