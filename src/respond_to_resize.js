@@ -43,6 +43,7 @@
         console.log(rejectObj);
         console.log(user);
         if (user.id != rejectObj.approvalUser) {
+          console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
             text: text,
