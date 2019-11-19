@@ -42,7 +42,13 @@
         const rejectObj = JSON.parse(rejectValue);
         console.log(rejectObj);
         console.log(user);
-        if (user.id != rejectObj.approvalUser) {
+        console.log(rejectObj.approvalUser);
+        const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
+        console.log(approvalUserAlphanumericOnly);
+        console.log("abc");
+        console.log(http_request);
+        
+        if (user.slack.userId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
@@ -71,7 +77,7 @@
         // do we want this to be threaded?
         const parameters = api.run("this.create_parameters_for_approval", {
           channel: channel,
-          user: user,
+          user: user.slack.userId, // XXX do we need to make sure all folks using this are authed via slack?
           approvalUser: approvalUser,
           instanceId: instanceId,
           newSize: newSize
