@@ -188,6 +188,19 @@
           "js": "create_parameters_for_approval.js",
           "lang": "js"
         }
+      }, {
+        "id": "post_ephemeral_message",
+        "tql": {
+          "parameters": [{
+            "name": "channel",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "text",
+            "type": "STRING"
+          }],
+          "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+        }
       }],
       "dataConnections": [{
         "ref": "slack_identify.raw",
