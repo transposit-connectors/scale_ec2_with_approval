@@ -47,7 +47,7 @@
           return api.run("this.post_ephemeral_message", {
             text: text,
             channel: channel, 
-            user.id
+            user: user.id
           });
         }
         // if ()
