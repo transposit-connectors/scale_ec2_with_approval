@@ -208,8 +208,22 @@
       }, {
         "id": "resize_ec2_instance",
         "function": {
+          "parameters": [{
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "newSize",
+            "type": "STRING",
+            "required": true
+          }],
           "js": "resize_ec2_instance.js",
           "lang": "js"
+        }
+      }, {
+        "id": "stop_instances",
+        "tql": {
+          "tql": "SELECT * FROM aws_ec2.stop_instances\n  WHERE $body=(SELECT {\n    'Force' : <boolean>,\n    'InstanceId' : [ '<string>' ],\n    'DryRun' : <boolean>\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }],
       "dataConnections": [{
