@@ -198,8 +198,12 @@
           }, {
             "name": "text",
             "type": "STRING"
+          }, {
+            "name": "user",
+            "type": "STRING",
+            "required": true
           }],
-          "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n    'user' : @user\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }],
       "dataConnections": [{

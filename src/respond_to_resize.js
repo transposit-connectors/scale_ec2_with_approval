@@ -46,7 +46,8 @@
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
             text: text,
-            channel: channel
+            channel: channel, 
+            user.id
           });
         }
         // if ()
