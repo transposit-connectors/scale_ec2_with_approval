@@ -171,7 +171,7 @@
             "required": true
           }, {
             "name": "user",
-            "type": "OBJECT"
+            "type": "STRING"
           }, {
             "name": "approvalUser",
             "type": "STRING",
