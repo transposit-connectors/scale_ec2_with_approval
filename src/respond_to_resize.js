@@ -46,7 +46,6 @@
         const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
         console.log(approvalUserAlphanumericOnly);
         console.log("abc");
-        console.log(http_request);
         
         if (user.slack.userId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
