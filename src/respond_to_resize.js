@@ -22,11 +22,15 @@
       const action = payload.actions[0].action_id;
       console.log(action);
       if (action == "approve") {
+        const approveValue = payload.actions[0].value;
+        console.log(approveValue);
         // verify this is the approvalUser
         // take action
         // send message about approval
       }
       if (action == "reject") {
+        const rejectValue = payload.actions[0].value;
+        console.log(rejectValue);
         // if ()
         // verify this is the approval user
         // send message about rejection
