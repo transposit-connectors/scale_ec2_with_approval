@@ -99,6 +99,8 @@
       }
       const instanceId = command_array[1];
       const approvalUser = command_array[3];
+      console.log("abadfas")
+      console.log(user);
       const stashKey = instanceId + "-" + user.slack.id;
       stash.put(stashKey, approvalUser);
       console.log(parsed_body.event.ts);
