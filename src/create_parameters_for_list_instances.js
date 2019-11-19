@@ -1,9 +1,7 @@
 (params) => {
-  const _ = require('underscore.js');
 
   const parameters = {};
-
-
+  
   parameters.channel = params.channel;
   parameters.action_id = "list";
   const user = params.user;
