@@ -27,7 +27,7 @@
         // send message about approval
       }
       if (action == "reject") {
-        if ()
+        // if ()
         // verify this is the approval user
         // send message about rejection
       }

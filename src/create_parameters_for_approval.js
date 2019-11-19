@@ -6,6 +6,12 @@
 
   parameters.channel = params.channel;
   const user = params.user;
+  const value = {};
+  value.instanceId = params.instanceId;
+  value.newSize = params.newSize;
+  value.requestUser = params.user.id;
+  value.approvalUser = params.approvalUser.id;
+  const valueStr = JSON.stringify(value);
   
   console.log(user);
   parameters.blocks = [{
@@ -25,7 +31,7 @@
             "text": "Approve",
             "emoji": true
           },
-          "value": "approve,"+params.instanceId + ","+params.newSize
+          "value": valueStr
         },
 
         {
@@ -36,7 +42,7 @@
             "text": "Reject",
             "emoji": true
           },
-          "value": "reject,"+params.instanceId + ","+params.newSize
+          "value": valueStr
         }
       ]
     }
