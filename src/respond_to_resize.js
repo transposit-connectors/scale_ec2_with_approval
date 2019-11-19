@@ -40,6 +40,8 @@
         const rejectValue = payload.actions[0].value;
         console.log(rejectValue);
         const rejectObj = JSON.parse(rejectValue);
+        console.log(rejectObj);
+        console.log(user);
         if (user.id != rejectObj.approvalUser) {
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_text_only_message", {
