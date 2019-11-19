@@ -69,7 +69,7 @@
         // do we want this to be threaded?
         const parameters = api.run("this.create_parameters_for_approval", {
           channel: channel,
-          user: user.slack.userId, // XXX do we need to make sure all folks using this are authed via slack?
+          user: actingUserId,
           approvalUser: approvalUser,
           instanceId: instanceId,
           newSize: newSize

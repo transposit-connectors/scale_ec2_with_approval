@@ -9,7 +9,7 @@
   const value = {};
   value.instanceId = params.instanceId;
   value.newSize = params.newSize;
-  value.requestUser = params.user.id;
+  value.requestUser = params.user;
   value.approvalUser = params.approvalUser;
   const valueStr = JSON.stringify(value);
   
@@ -18,7 +18,7 @@
       "type": "section",
       "text": {
         "type": "mrkdwn",
-        "text": params.approvalUser+", do you want to approve or reject the proposal to resize instance "+params.instanceId+" to a size: "+params.newSize+", from user: "+params.user.fullName+""
+        "text": params.approvalUser+", do you want to approve or reject the proposal to resize instance "+params.instanceId+" to a size: "+params.newSize+", from user: "+params.user+""
       }
     },
     {
