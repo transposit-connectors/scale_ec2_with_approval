@@ -47,9 +47,15 @@
           return api.run("this.post_ephemeral_message", {
             text: text,
             channel: channel, 
-            user: "UMHJZJ2BS" // UMHJZJ2BS, pR0MO0u4
+            user: user.slack.userId
           });
         }
+        //XXX reject/approve 
+        const text = "The request to resize instance "+ rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
+        return api.run("this.post_text_only_message", {
+            text: text,
+            channel: channel, 
+          });
         // if ()
         // verify this is the approval user
         // send message about rejection
