@@ -40,13 +40,13 @@
         console.log(approvalUserAlphanumericOnly);
         console.log("abc");
         
-        if (user.slack.userId != approvalUserAlphanumericOnly) {
+        if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
             text: text,
             channel: channel, 
-            user: user.slack.userId
+            user: actingUserId
           });
         }
         const text = "The request to resize instance "+ rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
