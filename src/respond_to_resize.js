@@ -50,8 +50,8 @@
             user: user.slack.userId
           });
         }
-        //XXX reject/approve 
         const text = "The request to resize instance "+ rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
+        console.log(text);
         return api.run("this.post_text_only_message", {
             text: text,
             channel: channel, 
