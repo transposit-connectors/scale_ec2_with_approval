@@ -10,7 +10,7 @@
   value.instanceId = params.instanceId;
   value.newSize = params.newSize;
   value.requestUser = params.user.id;
-  value.approvalUser = params.approvalUser.id;
+  value.approvalUser = params.approvalUser;
   const valueStr = JSON.stringify(value);
   
   console.log(user);
