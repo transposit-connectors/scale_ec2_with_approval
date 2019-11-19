@@ -99,7 +99,7 @@
       }
       const instanceId = command_array[1];
       const approvalUser = command_array[3];
-      const stashKey = instanceId + "-" + user.id;
+      const stashKey = instanceId + "-" + user.slack.id;
       stash.put(stashKey, approvalUser);
       console.log(parsed_body.event.ts);
 
@@ -110,8 +110,6 @@
         thread_ts: parsed_body.event.ts // XXX TODO
       })[0];
 
-      console.log("ffff");
-      console.log(JSON.stringify(parameters));
       return api.run("this.post_chat_message", parameters);
     }
 
