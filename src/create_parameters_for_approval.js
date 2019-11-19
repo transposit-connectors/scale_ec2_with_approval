@@ -14,6 +14,7 @@
   const valueStr = JSON.stringify(value);
   
   console.log(user);
+  parameters.link_names = true;
   parameters.blocks = [{
       "type": "section",
       "text": {
