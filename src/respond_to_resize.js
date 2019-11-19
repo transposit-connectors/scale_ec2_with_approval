@@ -45,7 +45,7 @@
         if (user.id != rejectObj.approvalUser) {
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_text_only_message", {
-            text: help_text,
+            text: text,
             channel: channel
           });
         }
