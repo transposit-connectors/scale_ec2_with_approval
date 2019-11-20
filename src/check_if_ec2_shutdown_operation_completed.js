@@ -4,6 +4,8 @@
   let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })");
   console.log("help");
   console.log(result);
+  console.log(result.name);
+  console.log(result.name == "stopped");
   if (result.name == "stopped") {
     console.log("stopped");
     // call another operation??
