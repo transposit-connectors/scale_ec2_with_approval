@@ -21,7 +21,4 @@
   // https://console.staging.transposit.com/t/nina/test_modules_initial/code/op/EcsCheckServiceEvents
   return result;
 
-  return {
-    success: true
-  };
 }

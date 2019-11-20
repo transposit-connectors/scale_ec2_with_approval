@@ -2,7 +2,7 @@
   const moment = require('moment-timezone-with-data.js');
 
   const text = "Resizing instance " + params.instanceId + ", looking for change to state " + params.stateLookingFor;
-  return api.run("this.post_text_only_message", {
+  api.run("this.post_text_only_message", {
     text: text,
     channel: "test5",
   });
@@ -24,7 +24,6 @@
     instanceId: params.instanceId
   }).runOnce(in30seconds);
   console.log("running in 30 s");
-  return;
 }
 
 /*
