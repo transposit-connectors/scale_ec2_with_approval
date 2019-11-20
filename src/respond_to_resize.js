@@ -32,6 +32,8 @@
         console.log("he");
         const parsed_body = http_event.parsed_body;
         console.log("he2");
+        console.log(parsed_body);
+        console.log(approveObj.requestUser);
         const requestUser = api.user({type: "slack", workspaceId: parsed_body.team_id, userId: approveObj.requestUser})
         console.log("he3");
         let text = "";
