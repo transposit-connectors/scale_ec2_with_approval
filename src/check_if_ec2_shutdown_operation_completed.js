@@ -5,16 +5,16 @@
   console.log("help");
   console.log(result);
   console.log(result.name);
-  console.log(result.name == "stopped");
+  console.log(result.name == params.stateLookingFor);
   if (result.name == "stopped") {
     console.log("stopped");
-    // call another operation??
+    api.run(operationToCall)
     return;
   } 
   
   
   const in30seconds = moment().add(30, "seconds").format();
-  task.create("this.check_if_ec2_shutdown_operation_completed", {instanceId: params.instanceId}).runOnce(in30seconds);
+  task.create("this.check_if_ec2_operation_completed", {instanceId: params.instanceId}).runOnce(in30seconds);
   console.log("running in 30 s");
   return;
 }

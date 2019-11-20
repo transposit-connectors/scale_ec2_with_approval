@@ -226,10 +226,18 @@
           "tql": "SELECT * FROM aws_ec2.stop_instances\n  WHERE $body=(SELECT {\n    'Force' : <boolean>,\n    'InstanceId' : [ '<string>' ],\n    'DryRun' : <boolean>\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }, {
-        "id": "check_if_ec2_shutdown_operation_completed",
+        "id": "check_if_ec2_operation_completed",
         "function": {
           "parameters": [{
             "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "stateLookingFor",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "operationToCall",
             "type": "STRING",
             "required": true
           }],
