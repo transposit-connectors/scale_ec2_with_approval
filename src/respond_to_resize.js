@@ -31,12 +31,13 @@
         // XXX re-entrant approve requests?
 
         console.log("he");
-        const requestUser = null;
-        /*api.user({
+        const requestUser = api.user({
           type: "slack",
           workspaceId: payload.team.id,
           userId: approveObj.requestUser
-        })*/
+        });
+        console.log(requestUser);
+        
         console.log("he3");
         let text = "";
         if (!requestUser) {
