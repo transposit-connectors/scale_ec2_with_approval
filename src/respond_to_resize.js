@@ -31,7 +31,7 @@
           
         console.log("he");
         console.log(payload.team_id);
-        const requestUser = api.user({type: "slack", workspaceId: payload.team_id, userId: approveObj.requestUser})
+        const requestUser = api.user({type: "slack", workspaceId: payload.team.id, userId: approveObj.requestUser})
         console.log("he3");
         let text = "";
         if (!requestUser) {
