@@ -30,7 +30,7 @@
     "type": "actions",
     "elements": [{
       "type": "static_select",
-      "action_id": "resize-"+params.instanceId,
+      "action_id": "resize-" + params.instanceId,
       "placeholder": {
         "type": "plain_text",
         "text": "Select a new instance type",
@@ -50,7 +50,7 @@
 
   instances.forEach(i => {
     const obj = _.clone(one_section);
-    obj.text.text = i.id + " - " + i.type + " - " + i.state+ ". Change to: ";
+    obj.text.text = i.id + " - " + i.type + " - " + i.state + ". Change to: ";
     parameters.blocks.push(obj);
     parameters.blocks.push(one_dd);
   });

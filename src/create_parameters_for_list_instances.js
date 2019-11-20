@@ -1,7 +1,7 @@
 (params) => {
 
   const parameters = {};
-  
+
   parameters.channel = params.channel;
   parameters.action_id = "list";
   const user = params.user;
@@ -18,10 +18,10 @@
   // let text = "";
   instances.forEach(i => {
     const obj = {
-    "type": "section",
-    "text": {
-      "type": "mrkdwn",
-      "text": "XXX REPLACE ME"
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "XXX REPLACE ME"
       },
     };
     obj.text.text = i.id + " - " + i.type + " - " + i.state;

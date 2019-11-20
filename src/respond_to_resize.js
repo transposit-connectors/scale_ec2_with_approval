@@ -8,7 +8,7 @@
   const channel = 'test5'; // XXX pull out to env var
 
   const payload = JSON.parse(http_event.parsed_body.payload);
-  
+
   setImmediate(() => {
     if (payload.actions && payload.actions[0]) {
       const action = payload.actions[0].action_id;
@@ -18,21 +18,25 @@
         const approveValue = payload.actions[0].value;
         const approveObj = JSON.parse(approveValue);
         const approvalUserAlphanumericOnly = approveObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
-        
+
         if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
             text: text,
-            channel: channel, 
+            channel: channel,
             user: actingUserId
           });
         }
         // XXX re-entrant approve requests?
-          
+
         console.log("he");
         console.log(payload.team_id);
-        const requestUser = api.user({type: "slack", workspaceId: payload.team.id, userId: approveObj.requestUser})
+        const requestUser = api.user({
+          type: "slack",
+          workspaceId: payload.team.id,
+          userId: approveObj.requestUser
+        })
         console.log("he3");
         let text = "";
         if (!requestUser) {
@@ -40,40 +44,45 @@
           text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;
         } else {
           console.log("he5");
-          text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
+          text = "The request to resize instance " + approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";
         }
-        
+
         api.run("this.post_text_only_message", {
-            text: text,
-            channel: channel, 
+          text: text,
+          channel: channel,
         });
 
-        const result = api.run("this.start_resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize}, {asUser: requestUser});
-        
+        const result = api.run("this.start_resize_ec2_instance", {
+          instanceId: approveObj.instanceId,
+          newSize: approveObj.newSize
+        }, {
+          asUser: requestUser
+        });
+
       }
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
         const rejectObj = JSON.parse(rejectValue);
         const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
-        
+
         if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
           return api.run("this.post_ephemeral_message", {
             text: text,
-            channel: channel, 
+            channel: channel,
             user: actingUserId
           });
         }
-        const text = "The request to resize instance "+ rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
+        const text = "The request to resize instance " + rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
         return api.run("this.post_text_only_message", {
-            text: text,
-            channel: channel, 
-          });
-        
+          text: text,
+          channel: channel,
+        });
+
       }
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
-        const instanceId = action.replace("resize-","")
+        const instanceId = action.replace("resize-", "")
         const stashKey = instanceId + "-" + actingUserId; // may want to key just on instance id and fail with error if already present.
         const approvalUser = stash.get(stashKey);
         const newSize = payload.actions[0].selected_option.value;
