@@ -37,6 +37,7 @@
         } else {
           text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
         }
+        console.log(requestUser);
         return;
         
         return api.run("this.post_text_only_message", {
