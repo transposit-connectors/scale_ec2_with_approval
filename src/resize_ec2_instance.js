@@ -1,7 +1,7 @@
 (params) => {
  console.log("instrz1 ");
   const text = "Beginning resizing instance " + params.instanceId;
-  return api.run("this.post_text_only_message", {
+  api.run("this.post_text_only_message", {
     text: text,
     channel: "test5",
   });
