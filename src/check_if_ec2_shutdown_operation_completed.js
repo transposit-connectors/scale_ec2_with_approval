@@ -1,5 +1,11 @@
 (params) => {
   const moment = require('moment-timezone-with-data.js');
+  
+  const text = "Resizing instance "+ params.instanceId+", looking for change to state "+params.stateLookingFor;
+        return api.run("this.post_text_only_message", {
+            text: text,
+            channel: channel, 
+        });
 
   let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })")[0];
   console.log("help");

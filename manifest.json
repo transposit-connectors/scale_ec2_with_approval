@@ -44,19 +44,6 @@
           "tql": "SELECT instancesSet.item.instanceId as id, \n       instancesSet.item.dnsName as hostname,\n       instancesSet.item.instanceType as type,\n       instancesSet.item.instanceState.name as state\nFROM aws_ec2.describe_instances\n"
         }
       }, {
-        "id": "webhook_1",
-        "function": {
-          "parameters": [{
-            "name": "http_event",
-            "default": {
-              "text": "{   \"query_parameters\": {     \"api_key\": \"XXX\"   },   \"http_method\": \"POST\",   \"parsed_body\": {     \"channel_name\": \"XXX\",     \"user_id\": \"UXXX\",     \"user_name\": \"iggy\",     \"trigger_id\": \"XXX\",     \"team_domain\": \"my_domain\",     \"team_id\": \"TXXX\",     \"text\": \"\",     \"channel_id\": \"DXXX\",     \"command\": \"/test\",     \"token\": \"XXX\",     \"response_url\": \"https://hooks.slack.com/commands/TXXX/XXX/XXX\"   },   \"body\": \"token=XXX&team_id=TXXX&team_domain=my_domain&channel_id=DXXX&channel_name=XXX&user_id=UXXX&user_name=iggy&command=%2Ftest&text=&response_url=https%3A%2F%2Fhooks.slack.com%2Fcommands%2FTXXX%2FXXX%2FXXX&trigger_id=XXX\" }"
-            },
-            "type": "OBJECT"
-          }],
-          "js": "webhook_1.js",
-          "lang": "js"
-        }
-      }, {
         "id": "post_chat_message",
         "tql": {
           "parameters": [{
@@ -206,11 +193,6 @@
           "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n    'user' : @user\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }, {
-        "id": "stop_instances",
-        "tql": {
-          "tql": "SELECT * FROM aws_ec2.stop_instances\n  WHERE $body=(SELECT {\n    'Force' : <boolean>,\n    'InstanceId' : [ '<string>' ],\n    'DryRun' : <boolean>\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
         "id": "check_if_ec2_operation_completed",
         "function": {
           "parameters": [{
@@ -246,6 +228,32 @@
             "required": true
           }],
           "js": "resize_ec2_instance.js",
+          "lang": "js"
+        }
+      }, {
+        "id": "resize_instance",
+        "function": {
+          "parameters": [{
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "newSize",
+            "type": "STRING",
+            "required": true
+          }],
+          "js": "resize_instance.js",
+          "lang": "js"
+        }
+      }, {
+        "id": "resize_complete",
+        "function": {
+          "parameters": [{
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }],
+          "js": "resize_complete.js",
           "lang": "js"
         }
       }],
