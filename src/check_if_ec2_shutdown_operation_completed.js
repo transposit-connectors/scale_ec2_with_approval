@@ -1,7 +1,7 @@
 (params) => {
   const moment = require('moment-timezone-with-data.js');
 
-  let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })");
+  let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })")[0];
   console.log("help");
   console.log(result);
   console.log(result.name);
