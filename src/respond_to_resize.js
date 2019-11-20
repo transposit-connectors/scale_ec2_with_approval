@@ -48,18 +48,20 @@
           text = "The request to resize instance " + approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";
         }
 
+        console.log("he6");
         api.run("this.post_text_only_message", {
           text: text,
           channel: channel,
         });
-
+console.log("he7");
+        
         const result = api.run("this.start_resize_ec2_instance", {
           instanceId: approveObj.instanceId,
           newSize: approveObj.newSize
         }, {
           asUser: requestUser
         });
-
+        console.log("he8");
       }
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
