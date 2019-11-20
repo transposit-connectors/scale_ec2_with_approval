@@ -33,7 +33,7 @@
         const requestUser = api.user({type: "slack", workspaceId: parsed_body.team_id, userId: approveObj.requestUser})
         let text = "";
         if (!requestUser) {
-          text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;"
+          text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;
         } else {
           text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
         }
