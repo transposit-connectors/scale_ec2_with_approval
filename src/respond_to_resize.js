@@ -59,7 +59,7 @@ console.log("he7");
           instanceId: approveObj.instanceId,
           newSize: approveObj.newSize
         }, {
-          asUser: requestUser.slack.email
+          asUser: requestUser.email
         });
         console.log("he8");
       }
