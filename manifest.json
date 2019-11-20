@@ -206,21 +206,6 @@
           "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n    'user' : @user\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }, {
-        "id": "resize_ec2_instance",
-        "function": {
-          "parameters": [{
-            "name": "instanceId",
-            "type": "STRING",
-            "required": true
-          }, {
-            "name": "newSize",
-            "type": "STRING",
-            "required": true
-          }],
-          "js": "resize_ec2_instance.js",
-          "lang": "js"
-        }
-      }, {
         "id": "stop_instances",
         "tql": {
           "tql": "SELECT * FROM aws_ec2.stop_instances\n  WHERE $body=(SELECT {\n    'Force' : <boolean>,\n    'InstanceId' : [ '<string>' ],\n    'DryRun' : <boolean>\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
@@ -240,8 +225,27 @@
             "name": "operationToCall",
             "type": "STRING",
             "required": true
+          }, {
+            "name": "operationParams",
+            "type": "OBJECT",
+            "required": true
           }],
           "js": "check_if_ec2_shutdown_operation_completed.js",
+          "lang": "js"
+        }
+      }, {
+        "id": "start_resize_ec2_instance",
+        "function": {
+          "parameters": [{
+            "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "newSize",
+            "type": "STRING",
+            "required": true
+          }],
+          "js": "resize_ec2_instance.js",
           "lang": "js"
         }
       }],

@@ -6,9 +6,9 @@
   console.log(result);
   console.log(result.name);
   console.log(result.name == params.stateLookingFor);
-  if (result.name == "stopped") {
-    console.log("stopped");
-    api.run(operationToCall)
+  if (result.name == params.stateLookingFor) {
+    console.log(params.stateLookingFor);
+    api.run(params.operationToCall, params.operationParams)
     return;
   } 
   

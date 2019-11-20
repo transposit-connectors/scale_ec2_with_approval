@@ -28,14 +28,25 @@
             user: actingUserId
           });
         }
+          
+        const parsed_body = http_event.parsed_body;
+        const requestUser = api.user({type: "slack", workspaceId: parsed_body.team_id, userId: approveObj.requestUser})
+        let text = "";
+        if (!requestUser) {
+          text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;"
+        } else {
+          text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
+        }
+        return;
         
-        const text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";
         return api.run("this.post_text_only_message", {
             text: text,
             channel: channel, 
         });
         
-        const result = api.run("this.resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize});
+        // need to run as the requesting user, though we may not have them.
+
+        const result = api.run("this.start_resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize}, asUser: );
         
         if (result.success) { 
             const text = "Resizing instance "+ approveObj.instanceId + " succeeded";
