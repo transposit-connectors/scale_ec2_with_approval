@@ -38,13 +38,13 @@
           text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
         }
         console.log(requestUser);
-        return;
+        
         
         return api.run("this.post_text_only_message", {
             text: text,
             channel: channel, 
         });
-        
+        return;
         // need to run as the requesting user, though we may not have them.
 
         const result = api.run("this.start_resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize}, {asUser: requestUser});
