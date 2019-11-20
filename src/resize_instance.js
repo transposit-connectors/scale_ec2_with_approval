@@ -2,7 +2,7 @@
   const text = "Resizing instance " + params.instanceId + "...";
   return api.run("this.post_text_only_message", {
     text: text,
-    channel: channel,
+    channel: "test5",
   });
   const modifySql = "SELECT * FROM aws_ec2.modify_instance_attribute WHERE $body=(SELECT { 'Attribute' : 'instanceType', 'InstanceId' : '" +
     params.instanceId + "', 'InstanceType' : { 'Value' : '" + params.newSize + "'} })"

@@ -8,13 +8,13 @@
     const text = "Resizing instance " + approveObj.instanceId + " succeeded";
     return api.run("this.post_text_only_message", {
       text: text,
-      channel: channel,
+      channel: "test5",
     });
   } else {
     const text = "Resizing instance " + approveObj.instanceId + " failed";
     return api.run("this.post_text_only_message", {
       text: text,
-      channel: channel,
+      channel: "test5",
     });
   }
 
