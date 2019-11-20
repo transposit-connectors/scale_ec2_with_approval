@@ -15,7 +15,7 @@
   
   const in30seconds = moment().add(30, "seconds").format();
   task.create("this.check_if_ec2_shutdown_operation_completed", {instanceId: params.instanceId}).runOnce(in30seconds);
-  console.log("running in one min");
+  console.log("running in 30 s");
   return;
 }
 
