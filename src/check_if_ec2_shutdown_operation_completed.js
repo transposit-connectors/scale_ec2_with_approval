@@ -2,6 +2,8 @@
   const moment = require('moment-timezone-with-data.js');
 
   let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '"+params.instanceId+"' ] })");
+  console.log("help");
+  console.log(result);
   if (result.name == "stopped") {
     console.log("stopped");
     // call another operation??
