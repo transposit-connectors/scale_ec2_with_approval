@@ -29,12 +29,17 @@
           });
         }
           
+        console.log("he");
         const parsed_body = http_event.parsed_body;
+        console.log("he2");
         const requestUser = api.user({type: "slack", workspaceId: parsed_body.team_id, userId: approveObj.requestUser})
+        console.log("he3");
         let text = "";
         if (!requestUser) {
+          console.log("he4");
           text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;
         } else {
+          console.log("he5");
           text = "The request to resize instance "+ approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";  
         }
         console.log(requestUser);
