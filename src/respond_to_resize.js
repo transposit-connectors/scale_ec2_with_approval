@@ -59,7 +59,7 @@ console.log("he7");
           instanceId: approveObj.instanceId,
           newSize: approveObj.newSize
         }, {
-          asUser: requestUser.email
+          asUser: requestUser.id
         });
         console.log("he8");
       }
