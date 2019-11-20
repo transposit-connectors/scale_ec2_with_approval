@@ -46,7 +46,7 @@
         
         // need to run as the requesting user, though we may not have them.
 
-        const result = api.run("this.start_resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize}, asUser: );
+        const result = api.run("this.start_resize_ec2_instance", {instanceId: approveObj.instanceId, newSize: approveObj.newSize}, asUser: requestUser);
         
         if (result.success) { 
             const text = "Resizing instance "+ approveObj.instanceId + " succeeded";
