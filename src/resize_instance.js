@@ -8,7 +8,7 @@
     params.instanceId + "', 'InstanceType' : { 'Value' : '" + params.newSize + "'} })"
   console.log(modifySql);
   console.log("aaaa");
-  let result = api.query(modifySql);
+  let result = api.query(modifySql)[0];
   console.log(result);
   console.log("aaaa2");
   if (result.success) {
