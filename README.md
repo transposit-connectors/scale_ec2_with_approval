@@ -13,7 +13,7 @@ You'll need a free Transposit account. You'll also need the ability to install a
 
 ## Transposit setup
 
-  * * [Fork](https://console.transposit.com/t/transposit-sample/scale_ec2_with_approval?fork=true) the app
+  * [Fork](https://console.transposit.com/t/transposit-sample/scale_ec2_with_approval?fork=true) the app
   * Lock the XXX users who can login to your slack workspace (because you are providing a general Slack key.
   * Navigate to **Code > Data Connections > aws_ec2** and click the "Edit" button under "Configuration". Update this to point to the region where you started your EC2 instances.
 
