@@ -37,7 +37,7 @@
           userId: approveObj.requestUser
         });
         console.log(requestUser);
-        
+
         console.log("he3");
         let text = "";
         if (!requestUser) {
@@ -53,8 +53,8 @@
           text: text,
           channel: channel,
         });
-console.log("he7");
-        
+        console.log("he7");
+
         const result = api.run("this.start_resize_ec2_instance", {
           instanceId: approveObj.instanceId,
           newSize: approveObj.newSize

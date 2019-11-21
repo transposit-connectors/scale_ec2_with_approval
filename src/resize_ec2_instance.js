@@ -1,5 +1,5 @@
 (params) => {
- console.log("instrz1 ");
+  console.log("instrz1 ");
   const text = "Beginning resizing instance " + params.instanceId;
   api.run("this.post_text_only_message", {
     text: text,
@@ -19,5 +19,5 @@
     operationToCall: "this.resize_instance",
     operationParams: resizeInstanceParams
   });
-  
+
 }
