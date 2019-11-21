@@ -27,16 +27,13 @@
           user: actingUserId,
           approvalUser: approvalUser,
           instanceId: instanceId,
-          newSize: newSize,
-          channel: channel
+          newSize: newSize
         })[0];
 
         return api.run("this.post_chat_message", parameters);
-
       }
 
       if (action == "approve") {
-
         const approveValue = payload.actions[0].value;
         const approveObj = JSON.parse(approveValue);
         const approvalUserAlphanumericOnly = approveObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
@@ -109,7 +106,7 @@
           });
         }
         const text = "The request to resize instance " + rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
-        return api.run("this.post_text_only_message", {
+        api.run("this.post_text_only_message", {
           text: text,
           channel: channel,
         });
