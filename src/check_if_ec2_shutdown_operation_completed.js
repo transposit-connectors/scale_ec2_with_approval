@@ -8,12 +8,7 @@
   });
 
   let result = api.query("SELECT instancesSet.item.instanceState.name FROM aws_ec2.describe_instances WHERE $body=(SELECT { 'InstanceId' : [ '" + params.instanceId + "' ] })")[0];
-  console.log("help");
-  console.log(result);
-  console.log(result.name);
-  console.log(result.name == params.stateLookingFor);
   if (result.name == params.stateLookingFor) {
-    console.log(params.stateLookingFor);
     api.run(params.operationToCall, params.operationParams)
     return;
   }

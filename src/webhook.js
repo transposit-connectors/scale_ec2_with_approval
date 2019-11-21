@@ -20,7 +20,6 @@
   const _ = require('underscore.js');
 
   setImmediate(() => {
-    console.log(http_event);
 
     let user = api.user({
       type: "slack",
@@ -93,8 +92,6 @@
 
       const instanceId = command_array[1].trim();
       const approvalUser = command_array[3].trim();
-      console.log(instanceId);
-      console.log(approvalUser);
 
       if (!instanceId || !/^i-[0-9]/.exec(instanceId) || !approvalUser) {
         console.log("didn't see resize command we understood");
@@ -106,12 +103,8 @@
         });
       }
 
-
-      console.log("abadfas")
-      console.log(user);
       const stashKey = instanceId + "-" + user.slack.userId;
       stash.put(stashKey, approvalUser);
-      console.log(parsed_body.event.ts);
 
       const parameters = api.run("this.create_parameters_for_resize_instances", {
         channel: channel,
@@ -122,8 +115,6 @@
 
       return api.run("this.post_chat_message", parameters);
     }
-
-
   });
 
   return {

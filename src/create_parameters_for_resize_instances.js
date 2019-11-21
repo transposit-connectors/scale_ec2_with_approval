@@ -3,9 +3,9 @@
 
   const parameters = {};
 
-
   parameters.channel = params.channel;
   const user = params.user;
+
   parameters.blocks = [];
 
   const types = ['t2.nano', 't2.micro', 't2.small', 't2.medium', 't2.large', 't2.xlarge', 't2.2xlarge'];
@@ -45,7 +45,6 @@
   }).filter(i => {
     return i.id == params.instanceId
   });
-  // console.log(instances);
   parameters.thread_ts = params.thread_ts;
 
   instances.forEach(i => {
@@ -54,7 +53,6 @@
     parameters.blocks.push(obj);
     parameters.blocks.push(one_dd);
   });
-  console.log("wassup");
-  console.log(parameters);
+
   return parameters;
 }

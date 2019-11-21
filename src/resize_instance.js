@@ -6,11 +6,9 @@
   });
   const modifySql = "SELECT * FROM aws_ec2.modify_instance_attribute WHERE $body=(SELECT { 'Attribute' : 'instanceType', 'InstanceId' : '" +
     params.instanceId + "', 'InstanceType' : { 'Value' : '" + params.newSize + "'} })"
-  console.log(modifySql);
-  console.log("aaaa");
+
   let result = api.query(modifySql)[0];
-  console.log(result);
-  console.log("aaaa2");
+
   if (result.ModifyInstanceAttributeResponse.return) { // is this async as well?
     let startResult = api.query("SELECT * FROM aws_ec2.start_instances WHERE $body=(SELECT { 'InstanceId' : [ '" + params.instanceId + "' ] })");
 

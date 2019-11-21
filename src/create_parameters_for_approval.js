@@ -11,11 +11,9 @@
   value.newSize = params.newSize;
   value.requestUser = params.user;
   value.approvalUser = params.approvalUser;
+
   const valueStr = JSON.stringify(value);
 
-  console.log(user);
-  console.log(params.approvalUser);
-  // parameters.link_names = true;
   parameters.blocks = [{
       "type": "section",
       "text": {

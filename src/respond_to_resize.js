@@ -1,9 +1,7 @@
 ({
   http_event
 }) => {
-  console.log(http_event);
-  console.log(http_event.parsed_body.payload);
-  console.log(JSON.parse(http_event.parsed_body.payload));
+  //console.log(JSON.parse(http_event.parsed_body.payload));
 
   const channel = 'test5'; // XXX pull out to env var
 
@@ -14,6 +12,7 @@
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
       console.log(action);
+
       if (action == "approve") {
         const approveValue = payload.actions[0].value;
         const approveObj = JSON.parse(approveValue);
@@ -28,32 +27,24 @@
             user: actingUserId
           });
         }
-        // XXX re-entrant approve requests?
 
-        console.log("he");
         const requestUser = api.user({
           type: "slack",
           workspaceId: payload.team.id,
           userId: approveObj.requestUser
         });
-        console.log(requestUser);
 
-        console.log("he3");
         let text = "";
         if (!requestUser) {
-          console.log("he4");
           text = `The requesting user, <@${approveObj.requestUser}>, has not been authenticated by the app, so we can't resize the instance. Please configure user settings at ${env.getBuiltin().appUrl}`;
         } else {
-          console.log("he5");
           text = "The request to resize instance " + approveObj.instanceId + " was approved by " + approveObj.approvalUser + ". Resizing...";
         }
 
-        console.log("he6");
         api.run("this.post_text_only_message", {
           text: text,
           channel: channel,
         });
-        console.log("he7");
 
         const result = api.run("this.start_resize_ec2_instance", {
           instanceId: approveObj.instanceId,
@@ -61,7 +52,6 @@
         }, {
           asUser: requestUser.id
         });
-        console.log("he8");
       }
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
@@ -89,9 +79,7 @@
         const stashKey = instanceId + "-" + actingUserId; // may want to key just on instance id and fail with error if already present.
         const approvalUser = stash.get(stashKey);
         const newSize = payload.actions[0].selected_option.value;
-        // present button to approvalUser
-        // handle either case and update this message.
-        // do we want this to be threaded?
+
         const parameters = api.run("this.create_parameters_for_approval", {
           channel: channel,
           user: actingUserId,
@@ -100,7 +88,6 @@
           newSize: newSize
         })[0];
 
-        console.log(parameters);
         return api.run("this.post_chat_message", parameters);
 
       }
