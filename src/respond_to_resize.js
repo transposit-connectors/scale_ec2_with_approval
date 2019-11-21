@@ -12,9 +12,16 @@
       console.log(payload);
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
-      console.log(action);
+      const action_ts = action.container.message_ts
 
       if (action == "approve") {
+          if (stash.get(action_ts) == "processed") {
+          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
+        return api.run("this.post_text_only_message", {
+          text: text,
+          channel: channel,
+        });
+        }
         const approveValue = payload.actions[0].value;
         const approveObj = JSON.parse(approveValue);
         const approvalUserAlphanumericOnly = approveObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
@@ -47,18 +54,26 @@
           channel: channel,
         });
 
-        const result = api.run("this.start_resize_ec2_instance", {
+        api.run("this.start_resize_ec2_instance", {
           instanceId: approveObj.instanceId,
           newSize: approveObj.newSize
         }, {
           asUser: requestUser.id
         });
+        stash.put(action_ts, "processed");
       }
       if (action == "reject") {
         const rejectValue = payload.actions[0].value;
         const rejectObj = JSON.parse(rejectValue);
         const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
-
+        if (stash.get(action_ts) == "processed") {
+          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
+        return api.run("this.post_text_only_message", {
+          text: text,
+          channel: channel,
+        });
+        }
+        
         if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
           let text = "You are not authorized to approve or reject this message.";
@@ -73,7 +88,7 @@
           text: text,
           channel: channel,
         });
-
+        stash.put(action_ts, "processed");
       }
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = action.replace("resize-", "")
