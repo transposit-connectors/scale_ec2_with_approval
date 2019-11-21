@@ -15,13 +15,7 @@
       const action_ts = payload.container.message_ts
 
       if (action == "approve") {
-          if (stash.get(action_ts) == "processed") {
-          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
-        return api.run("this.post_text_only_message", {
-          text: text,
-          channel: channel,
-        });
-        }
+    
         const approveValue = payload.actions[0].value;
         const approveObj = JSON.parse(approveValue);
         const approvalUserAlphanumericOnly = approveObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
@@ -34,6 +28,14 @@
             channel: channel,
             user: actingUserId
           });
+        }
+        
+              if (stash.get(action_ts) == "processed") {
+          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
+        return api.run("this.post_text_only_message", {
+          text: text,
+          channel: channel,
+        });
         }
 
         const requestUser = api.user({
@@ -66,13 +68,6 @@
         const rejectValue = payload.actions[0].value;
         const rejectObj = JSON.parse(rejectValue);
         const approvalUserAlphanumericOnly = rejectObj.approvalUser.replace(/[^a-z0-9]/gmi, ""); // because we get it as @<JK234> but want JK234
-        if (stash.get(action_ts) == "processed") {
-          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
-        return api.run("this.post_text_only_message", {
-          text: text,
-          channel: channel,
-        });
-        }
         
         if (actingUserId != approvalUserAlphanumericOnly) {
           console.log("unable to process because of commitment");
@@ -82,6 +77,14 @@
             channel: channel,
             user: actingUserId
           });
+        }
+        
+         if (stash.get(action_ts) == "processed") {
+          const text = "This request has already been processed. To resize this instance, please go through the flow again.";
+        return api.run("this.post_text_only_message", {
+          text: text,
+          channel: channel,
+        });
         }
         const text = "The request to resize instance " + rejectObj.instanceId + " was rejected by " + rejectObj.approvalUser;
         return api.run("this.post_text_only_message", {
