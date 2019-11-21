@@ -7,7 +7,7 @@
     text = "Resizing instance " + params.instanceId + " succeeded and it's up and running again.";
   }
   return api.run("this.post_text_only_message", {
-      text: text,
-      channel: "test5",
-    });
+    text: text,
+    channel: "test5",
+  });
 }

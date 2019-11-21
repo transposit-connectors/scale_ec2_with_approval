@@ -97,13 +97,13 @@
           channel: channel
         });
       }
-      
+
       const instanceId = command_array[1].trim();
       const approvalUser = command_array[3].trim();
       console.log(instanceId);
       console.log(approvalUser);
-      
-      if (!instanceId || !/^i-[0-9]/.exec(instanceId) || !approvalUser ) {
+
+      if (!instanceId || !/^i-[0-9]/.exec(instanceId) || !approvalUser) {
         console.log("didn't see resize command we understood");
         console.log(command_array);
         console.log(raw_command);
@@ -112,8 +112,8 @@
           channel: channel
         });
       }
-      
-      
+
+
       console.log("abadfas")
       console.log(user);
       const stashKey = instanceId + "-" + user.slack.userId;

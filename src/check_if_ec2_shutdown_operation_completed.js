@@ -21,7 +21,7 @@
 
   const in15seconds = moment().add(15, "seconds").format();
   task.create("this.check_if_ec2_operation_completed", {
-    instanceId: params.instanceId, 
+    instanceId: params.instanceId,
     stateLookingFor: params.stateLookingFor,
     operationToCall: params.operationToCall,
     operationParams: params.operationParams
