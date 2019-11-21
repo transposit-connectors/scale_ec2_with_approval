@@ -15,7 +15,7 @@ You'll need an AWS account.
 
 ## Transposit setup
 
-  * Fork the app [https://console.transposit.com/t/transposit-sample/scale_ec2_with_approval](https://console.transposit.com/t/transposit-sample/scale_ec2_with_approval) (find the Fork button at the top of the editor view).
+  * * [Fork](https://console.transposit.com/t/transposit-sample/scale_ec2_with_approval?fork=true) the app
   * Lock the XXX users who can login to your slack workspace (because you are providing a general Slack key.
   * Navigate to **Code > Data Connections > aws_ec2** and click the "Edit" button under "Configuration". Update this to point to the region where you started your EC2 instances.
 
@@ -25,7 +25,7 @@ To interact with your bot, you need to create a Slack App. Here's the [entire gu
 
   * Navigate to **Deploy > Endpoints Keys** and copy the `webhook` url (something like `https://scale-ec2-with-approval-xxx.transposit.io/api/v1/execute-http/webhook?api_key=xxxx`). 
   * Navigate to **Deploy > Endpoints Keys** and copy the `respond_to_resize` url (something like `https://scale-ec2-with-approval-xxx.transposit.io/api/v1/execute-http/respond_to_resize?api_key=xxxx`). 
-  * Create a new Slack App.
+  * Create a [new Slack App](https://api.slack.com/apps).
   * In the configuration of this app:
     * Create a bot user for the app (I named mine 'approvalbot') under "Bot Users"
     * Use the `respond_to_resize` url from above for the Interactivity 'Request URL'. This is under "Interactive Components".
