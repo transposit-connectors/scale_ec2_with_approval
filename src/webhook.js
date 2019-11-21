@@ -1,6 +1,4 @@
-({
-  http_event
-}) => {
+({http_event}) => {
 
   if (http_event.parsed_body.challenge) {
     return {

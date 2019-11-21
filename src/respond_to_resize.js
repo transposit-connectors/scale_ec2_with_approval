@@ -1,6 +1,4 @@
-({
-  http_event
-}) => {
+({http_event}) => {
   const payload = JSON.parse(http_event.parsed_body.payload);
 
   setImmediate(() => {
