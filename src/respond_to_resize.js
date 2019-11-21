@@ -9,6 +9,7 @@
 
   setImmediate(() => {
     if (payload.actions && payload.actions[0]) {
+      console.log(payload);
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
       console.log(action);
