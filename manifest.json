@@ -45,7 +45,7 @@
             "type": "ARRAY",
             "required": true
           }],
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'blocks' : @blocks,\n    'channel' : @channel,\n    -- 'text' : 'a'  \n    \n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    'blocks' : @blocks,\n    'channel' : @channel,\n  })"
         }
       }, {
         "id": "post_text_only_message",
@@ -155,10 +155,11 @@
             "type": "STRING",
             "required": true
           }],
-          "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n    'user' : @user\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
+          "tql": "SELECT * FROM slack.post_chat_ephemeral\n  WHERE $body=(SELECT {\n    'channel' : @channel,\n    'text' : @text,\n    'user' : @user\n  })\n"
         }
       }, {
         "id": "check_if_ec2_operation_completed",
+        "description": "Polls to check if an async ec2 operation is completed",
         "function": {
           "parameters": [{
             "name": "instanceId",

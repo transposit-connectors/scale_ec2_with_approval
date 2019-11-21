@@ -103,10 +103,6 @@
         console.log(parameters);
         return api.run("this.post_chat_message", parameters);
 
-        // return api.run("this.post_text_only_message", {
-        // text: "Great, will ask "+approvalUser+ " to approve changing instance: "+instanceId+ "  to this new size: "+ newSize,
-        // channel: channel
-        // });
       }
     }
   });
