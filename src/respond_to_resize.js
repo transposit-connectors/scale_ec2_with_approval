@@ -5,9 +5,7 @@
 
   setImmediate(() => {
     if (payload.actions && payload.actions[0]) {
-      console.log("p");
       console.log(payload);
-      console.log("p2");
 
       const channel = payload.channel.id;
 
