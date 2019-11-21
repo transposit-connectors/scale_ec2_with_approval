@@ -281,6 +281,8 @@
       "javascriptAPIVersion": "3",
       "source": "src",
       "userSettingsDisplay": "GENERATED"
-    }
+    },
+    "description": "Scale an EC2 Instance, but with approval",
+    "displayName": "Scale EC2 Instances With Approval Process"
   }
 }
