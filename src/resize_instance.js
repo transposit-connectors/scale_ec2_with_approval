@@ -11,7 +11,7 @@
   let result = api.query(modifySql)[0];
   console.log(result);
   console.log("aaaa2");
-  if (result.success) {
+  if (result.ModifyInstanceAttributeResponse.return) { // is this async as well?
     let startResult = api.query("SELECT * FROM aws_ec2.start_instances WHERE $body=(SELECT { 'InstanceId' : [ '" + params.instanceId + "' ] })");
 
     const resizeCompleteParams = {};
