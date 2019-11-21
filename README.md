@@ -4,11 +4,9 @@ This integration will allow you to list all your EC2 instances and scale them fr
 
 ## Before you start
 
-You'll need a free Transposit account. You'll also need the ability to install an application on Slack.
+You'll need a free Transposit account. You'll also need the ability to install an application on Slack. Finally, you'll need an AWS account where you can create an IAM user.
 
-## AWS setup
-
-You'll need an AWS account. 
+### AWS setup
 
   * Create an IAM user with the following permissions: `AmazonEC2FullAccess`. If you are an IAM expert, write a policy that is more constrained, but still lets a user start, stop, describe EC2 instances as well as modify an EC2 instance type.
   * Start up one or more `t2.nano` EC2 instances in a region. Note that region.
@@ -26,14 +24,13 @@ To interact with your bot, you need to create a Slack App. Here's the [entire gu
   * Navigate to **Deploy > Endpoints Keys** and copy the `webhook` url (something like `https://scale-ec2-with-approval-xxx.transposit.io/api/v1/execute-http/webhook?api_key=xxxx`). 
   * Navigate to **Deploy > Endpoints Keys** and copy the `respond_to_resize` url (something like `https://scale-ec2-with-approval-xxx.transposit.io/api/v1/execute-http/respond_to_resize?api_key=xxxx`). 
   * Create a [new Slack App](https://api.slack.com/apps).
-  * In the configuration of this app:
-    * Create a bot user for the app (I named mine 'approvalbot') under "Bot Users"
-    * Use the `respond_to_resize` url from above for the Interactivity 'Request URL'. This is under "Interactive Components".
-    * Create a bot user for the app (I named mine 'approvalbot') under "Bot Users"
-    * Give your app the following OAuth scopes under "OAuth & Permissions": `bot`, `chat:write:bot`. Use https://accounts.transposit.com/oauth/v2/handle-redirect for the redirect URL.
-    * Subscribe to the `app_mention` event. Use the `webhook` url from above for the 'Request URL'.
-    * Set up the Transposit app to act as the bot user by grabbing the client secret and following the [instructions here](https://www.transposit.com/docs/guides/slack/chatbots/#acting-as-your-bot-user).
-    * Install the app to your workspace under "Install App".
+  * In the configuration of the Slack app:
+    * Navigate to **Bot Users** and create a bot user for the app (I named mine 'approvalbot')
+    * Navigate to **Interactive Components** and set the 'Request URL' to  the `respond_to_resize` URL from above.
+    * Navigate to **OAuth & Permissions** and give your app the following OAuth scopes: `bot` and `chat:write:bot`. Use https://accounts.transposit.com/oauth/v2/handle-redirect for the redirect URL.
+    * Navigate to **Event Subscriptions** and subscribe to the `app_mention` event. Use the `webhook` URL from above for the 'Request URL'.
+    * Navigate to **Basic Information** and set up the Transposit app to act as the bot user by copying the client secret and following the [instructions here](https://www.transposit.com/docs/guides/slack/chatbots/#acting-as-your-bot-user).
+    * Navigate to **Install App** and install the app to your workspace.
   * Create or choose a channel for the posts. Make sure you have at least two Slack users in the account.
   * Invite the bot user to your channel: `/invite @approvalbot`
 
