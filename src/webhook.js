@@ -109,8 +109,7 @@
       const parameters = api.run("this.create_parameters_for_resize_instances", {
         channel: channel,
         user: user,
-        instanceId: instanceId,
-        thread_ts: parsed_body.event.ts // XXX TODO
+        instanceId: instanceId
       })[0];
 
       return api.run("this.post_chat_message", parameters);

@@ -45,7 +45,6 @@
   }).filter(i => {
     return i.id == params.instanceId
   });
-  parameters.thread_ts = params.thread_ts;
 
   instances.forEach(i => {
     const obj = _.clone(one_section);
