@@ -2,7 +2,6 @@
   http_event
 }) => {
   const payload = JSON.parse(http_event.parsed_body.payload);
-  const parsed_body = http_event.parsed_body;
 
   setImmediate(() => {
     if (payload.actions && payload.actions[0]) {
@@ -10,7 +9,7 @@
       console.log(payload);
     console.log("p2");
       
-      const channel = parsed_body.channel.id;
+      const channel = payload.channel.id;
 
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
