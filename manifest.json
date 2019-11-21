@@ -29,16 +29,6 @@
           "webhook": true
         }
       }, {
-        "id": "get_slack_message",
-        "function": {
-          "parameters": [{
-            "name": "user",
-            "type": "STRING"
-          }],
-          "js": "get_slack_message.js",
-          "lang": "js"
-        }
-      }, {
         "id": "describe_instances",
         "tql": {
           "tql": "SELECT instancesSet.item.instanceId as id, \n       instancesSet.item.dnsName as hostname,\n       instancesSet.item.instanceType as type,\n       instancesSet.item.instanceState.name as state\nFROM aws_ec2.describe_instances\n"
@@ -123,31 +113,6 @@
         "access": {
           "requireApiKey": true,
           "webhook": true
-        }
-      }, {
-        "id": "post_chat_message_1",
-        "tql": {
-          "tql": "SELECT * FROM slack.post_chat_message\n  WHERE $body=(SELECT {\n    -- 'icon_url' : '<string>',\n    -- 'link_names' : <boolean>,\n    -- 'attachments' : '<string>',\n    -- 'icon_emoji' : '<string>',\n    'channel' : 'DQLTSLTGQ',\n    -- 'parse' : '<string>',\n    -- 'mrkdwn' : <boolean>,\n    -- 'as_user' : <boolean>,\n    -- 'thread_ts' : '<string>',\n    -- 'unfurl_media' : <boolean>,\n    -- 'unfurl_links' : <boolean>,\n    -- 'reply_broadcast' : <boolean>,\n    'text' : 'hiya',\n    -- 'username' : '<string>'\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
-        }
-      }, {
-        "id": "find_user_id_from_real_name",
-        "tql": {
-          "parameters": [{
-            "name": "username",
-            "type": "STRING",
-            "required": true
-          }],
-          "tql": "SELECT id FROM slack.list_users\nWHERE real_name = @username"
-        }
-      }, {
-        "id": "open_private_chat",
-        "tql": {
-          "parameters": [{
-            "name": "userid",
-            "type": "STRING",
-            "required": true
-          }],
-          "tql": "SELECT channel.id FROM slack.open_im\n  WHERE $body=(SELECT {\n    'user' : @userid\n  })\n\n/*\n * For sample code and reference material, visit\n * https://www.transposit.com/docs/get-started/sql-quickstart\n */"
         }
       }, {
         "id": "create_parameters_for_approval",
