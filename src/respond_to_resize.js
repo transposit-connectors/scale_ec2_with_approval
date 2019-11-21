@@ -12,7 +12,7 @@
       console.log(payload);
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
-      const action_ts = action.container.message_ts
+      const action_ts = payload.container.message_ts
 
       if (action == "approve") {
           if (stash.get(action_ts) == "processed") {
