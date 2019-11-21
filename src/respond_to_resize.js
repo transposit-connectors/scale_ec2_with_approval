@@ -7,9 +7,8 @@
   setImmediate(() => {
     if (payload.actions && payload.actions[0]) {
       console.log(payload);
-      console.log(parsed_body);
      
-      const channel = parsed_body.event.channel;
+      const channel = parsed_body.channel.id;
 
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
