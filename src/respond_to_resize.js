@@ -7,17 +7,17 @@
     if (payload.actions && payload.actions[0]) {
       console.log("p");
       console.log(payload);
-    console.log("p2");
-      
+      console.log("p2");
+
       const channel = payload.channel.id;
 
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
       const action_ts = payload.container.message_ts;
-      
+
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = action.replace("resize-", "")
-        const stashKey = instanceId + "-" + actingUserId; 
+        const stashKey = instanceId + "-" + actingUserId;
         const stashValue = JSON.parse(stash.get(stashKey));
         const approvalUser = stashValue.approvalUser;
         const newSize = payload.actions[0].selected_option.value;
@@ -112,7 +112,7 @@
         });
         stash.put(action_ts, "processed");
       }
-    
+
     }
   });
 
