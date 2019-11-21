@@ -54,7 +54,7 @@
     parameters.blocks.push(obj);
     parameters.blocks.push(one_dd);
   });
-
+  console.log("wassup");
   console.log(parameters);
   return parameters;
 }
