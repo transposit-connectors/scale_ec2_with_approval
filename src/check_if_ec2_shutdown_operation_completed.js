@@ -19,14 +19,14 @@
   }
 
 
-  const in30seconds = moment().add(30, "seconds").format();
+  const in15seconds = moment().add(15, "seconds").format();
   task.create("this.check_if_ec2_operation_completed", {
     instanceId: params.instanceId, 
     stateLookingFor: params.stateLookingFor,
     operationToCall: params.operationToCall,
     operationParams: params.operationParams
-  }).runOnce(in30seconds);
-  console.log("running in 30 s");
+  }).runOnce(in15seconds);
+  console.log("running in 15 s");
 }
 
 /*
