@@ -188,6 +188,10 @@
             "name": "newSize",
             "type": "STRING",
             "required": true
+          }, {
+            "name": "channel",
+            "type": "STRING",
+            "required": true
           }],
           "js": "resize_ec2_instance.js",
           "lang": "js"
@@ -203,6 +207,10 @@
             "name": "newSize",
             "type": "STRING",
             "required": true
+          }, {
+            "name": "channel",
+            "type": "STRING",
+            "required": true
           }],
           "js": "resize_instance.js",
           "lang": "js"
@@ -212,6 +220,10 @@
         "function": {
           "parameters": [{
             "name": "instanceId",
+            "type": "STRING",
+            "required": true
+          }, {
+            "name": "channel",
             "type": "STRING",
             "required": true
           }],

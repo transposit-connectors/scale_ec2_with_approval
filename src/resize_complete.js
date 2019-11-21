@@ -8,6 +8,6 @@
   }
   return api.run("this.post_text_only_message", {
     text: text,
-    channel: "test5",
+    channel: params.channel,
   });
 }

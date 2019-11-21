@@ -1,10 +1,6 @@
 ({
   http_event
 }) => {
-  //console.log(JSON.parse(http_event.parsed_body.payload));
-
-  const channel = 'test5'; // XXX pull out to env var
-
   const payload = JSON.parse(http_event.parsed_body.payload);
 
   setImmediate(() => {
@@ -12,7 +8,11 @@
       console.log(payload);
       const action = payload.actions[0].action_id;
       const actingUserId = payload.user.id;
-      const action_ts = payload.container.message_ts
+      const action_ts = payload.container.message_ts;
+      
+      const stashKey = instanceId + "-" + actingUserId; // may want to key just on instance id and fail with error if already present.
+      const stashValue = JSON.parse(stash.get(stashKey));
+      const channel = stashValue.channel;
 
       if (action == "approve") {
 
@@ -58,7 +58,8 @@
 
         api.run("this.start_resize_ec2_instance", {
           instanceId: approveObj.instanceId,
-          newSize: approveObj.newSize
+          newSize: approveObj.newSize,
+          channel: approveObj.channel
         }, {
           asUser: requestUser.id
         });
@@ -96,7 +97,8 @@
       if (/resize-/.exec(action) && payload.actions[0].block_id && payload.actions[0].selected_option && payload.actions[0].selected_option.value) {
         const instanceId = action.replace("resize-", "")
         const stashKey = instanceId + "-" + actingUserId; // may want to key just on instance id and fail with error if already present.
-        const approvalUser = stash.get(stashKey);
+        const stashValue = JSON.parse(stash.get(stashKey));
+        const approvalUser = stashValue.approvalUser;
         const newSize = payload.actions[0].selected_option.value;
 
         const parameters = api.run("this.create_parameters_for_approval", {
@@ -104,7 +106,8 @@
           user: actingUserId,
           approvalUser: approvalUser,
           instanceId: instanceId,
-          newSize: newSize
+          newSize: newSize,
+          channel: channel
         })[0];
 
         return api.run("this.post_chat_message", parameters);

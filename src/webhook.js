@@ -15,9 +15,7 @@
   const parsed_body = http_event.parsed_body;
   const workspaceId = parsed_body.team_id;
   const userId = parsed_body.event.user;
-  const channel = 'CQ4L4H1EJ'; // XXX pull out to env var
-  
-  console.log(parsed_body);
+  const channel = parsed_body.event.channel;
 
   setImmediate(() => {
 
@@ -26,7 +24,6 @@
       workspaceId: workspaceId,
       userId: userId
     });
-
 
     if (!user) {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
@@ -104,7 +101,10 @@
       }
 
       const stashKey = instanceId + "-" + user.slack.userId;
-      stash.put(stashKey, approvalUser);
+      const stashValue = {};
+      stashValue.approvalUser = approvalUser;
+      stashValue.channel = channel;
+      stash.put(stashKey, JSON.stringify(stashValue));
 
       const parameters = api.run("this.create_parameters_for_resize_instances", {
         channel: channel,

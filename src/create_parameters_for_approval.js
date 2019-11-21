@@ -11,6 +11,7 @@
   value.newSize = params.newSize;
   value.requestUser = params.user;
   value.approvalUser = params.approvalUser;
+  value.channel = params.channel;
 
   const valueStr = JSON.stringify(value);
 
