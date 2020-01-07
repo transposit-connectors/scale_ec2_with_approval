@@ -26,7 +26,7 @@
     if (!user) {
       let text = `Configure user settings at ${env.getBuiltin().appUrl}`;
       return api.run("this.post_text_only_message", {
-        text: help_text,
+        text: text,
         channel: channel
       })
     }
