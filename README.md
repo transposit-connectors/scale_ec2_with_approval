@@ -1,4 +1,4 @@
-# Scale EC2 Instance With Approval
+# Scale EC2 Instances With Approval Process
 
 This integration will allow you to list all your EC2 instances and scale them from within Slack. It requires you to ask for approval before the resize occurs, and captures the workflow progress in Slack.
 
